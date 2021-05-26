@@ -8,7 +8,7 @@ const IntentClasses = {
   secondary: 'bg-gray-300',
 };
 
-const Button = ({ intent, text, textColor }) => {
+const Button = ({ intent, text, textColor, className }) => {
   if (!IntentClasses[intent])
     throw new Error(
       `The intent "${intent}" does not exist, you can use one of [symbol, primary, secondary]`
@@ -18,12 +18,13 @@ const Button = ({ intent, text, textColor }) => {
     <button
       type="button"
       className={classname(
-        'w-14 h-14 rounded-full m-2 text-2xl',
+        'w-14 h-14 rounded-full m-2 text-2xl focus:outline-none active:bg-gray-200 transition-colors duration-300',
         {
           'text-white': textColor,
           'text-black': !textColor,
         },
-        IntentClasses[intent]
+        IntentClasses[intent],
+        className
       )}
     >
       {text}
@@ -35,6 +36,7 @@ Button.propTypes = {
   intent: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   textColor: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default Button;

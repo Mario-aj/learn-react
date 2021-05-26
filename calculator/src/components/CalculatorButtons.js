@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './Button';
-import WrapperButton from './WrapperButton';
+import Button from './Button/Button';
+import WrapperButton from './Button/WrapperButton';
 
 const CalculatorButtons = () => (
   <div className="flex flex-col w-full">

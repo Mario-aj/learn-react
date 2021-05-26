@@ -23,12 +23,11 @@
     ],
     "rules": {
       "prettier/prettier": "error",
-      "react/jsx-default-extension": [
+      "react/jsx-filename-extension": [
         "warn",
         { "extensions": [".js", ".jsx"] }
       ],
       "camelcase":"off",
-      "no-unused-vars":"error",
-      "sort-imports": "error"
+      "no-unused-vars":"error"
     }
 }

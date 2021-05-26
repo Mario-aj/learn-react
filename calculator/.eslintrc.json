@@ -1,33 +1,28 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "airbnb",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "eslint:recommended",
-        "plugin:prettier/recommended",
-        "airbnb",
-        "prettier"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error",
-      "react/jsx-filename-extension": [
-        "warn",
-        { "extensions": [".js", ".jsx"] }
-      ],
-      "camelcase":"off",
-      "no-unused-vars":"error"
-    }
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    "camelcase": "off",
+    "no-unused-vars": "error",
+    "react/require-default-props": "off"
+  }
 }

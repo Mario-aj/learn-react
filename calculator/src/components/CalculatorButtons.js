@@ -3,10 +3,10 @@ import Button from './Button';
 
 const CalculatorBUttons = () => (
   <div className="flex items-center justify-center w-full">
-    <Button text="7" intent="primary" />
-    <Button text="8" intent="primary" />
-    <Button text="9" intent="primary" />
-    <Button text="x" intent="symbol" />
+    <Button text="7" intent="primary" textColor />
+    <Button text="8" intent="primary" textColor />
+    <Button text="9" intent="primary" textColor />
+    <Button text="x" intent="symbol" textColor />
   </div>
 );
 

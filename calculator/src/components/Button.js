@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const IntentClasses = {
   symbol: 'bg-yellow-500',
-  primary: 'bg-gray-500',
+  primary: 'bg-gray-900',
   secondary: 'bg-gray-200',
 };
 
@@ -18,7 +18,7 @@ const Button = ({ intent, text, textColor }) => {
     <button
       type="button"
       className={classname(
-        'w-12 h-12 rounded-full m-2',
+        'w-14 h-14 rounded-full m-2 text-2xl',
         {
           'text-white': textColor,
           'text-black': !textColor,

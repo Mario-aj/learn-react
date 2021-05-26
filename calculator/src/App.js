@@ -1,5 +1,6 @@
 import React from 'react';
 import CalculatorButtons from './components/CalculatorButtons';
+import Screen from './components/Screnn';
 
 const App = () => (
   <div className="flex items-center justify-center w-screen h-screen py-4 bg-gray-300">
@@ -11,7 +12,8 @@ const App = () => (
           <div className="w-12 h-1 bg-black rounded-full" />
         </div>
       </div>
-      <div className="w-full h-full bg-black">
+      <div className="relative flex flex-col items-center justify-center w-full h-full bg-black">
+        <Screen />
         <CalculatorButtons />
       </div>
       <div className="absolute w-12 h-12 border-4 border-yellow-500 rounded-full bottom-2" />

@@ -1,24 +1,44 @@
-/* eslint-disable prefer-template */
 import React, { useState } from 'react';
 import Button from './Button/Button';
 import WrapperButton from './Button/WrapperButton';
 
 const CalculatorButtons = () => {
   let acumulator = Array(2).fill(0);
-  let operator = '';
+  const [operator, setOperator] = useState('');
   const [result, setResult] = useState(0);
 
-  const handleNumber = (value) => {};
+  const handleNumber = (value) => {
+    if (operator.trim()) return;
+
+    acumulator[0] = Number(String(acumulator[0]) + '' + String(value));
+
+    console.log(acumulator, result);
+  };
 
   const handleClean = () => {
     acumulator = [];
-    operator = '';
+    acumulator.length = 2;
+    acumulator.fill(0);
+    setOperator('');
     setResult(0);
   };
 
-  const handlePercentage = () => {};
-  const handleDiv = () => {};
-  const handleEqual = () => {};
+  const handlePercentage = () => {
+    setOperator('%');
+  };
+
+  const handleDiv = () => {
+    setOperator('/');
+  };
+
+  const handleEqual = () => {
+    if (!operator.trim()) setResult(acumulator[0]);
+
+    setResult(acumulator[0] + acumulator[1]);
+    acumulator[0] = acumulator[1];
+    acumulator[1] = 0;
+  };
+
   const handleSum = () => {};
   const handleSub = () => {};
   const handleMult = () => {};

@@ -23,6 +23,8 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "camelcase": "off",
     "no-unused-vars": "error",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "prefer-destructuring": "off",
+    "prefer-template": "off"
   }
 }

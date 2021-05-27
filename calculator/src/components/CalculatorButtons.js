@@ -1,13 +1,21 @@
 /* eslint-disable prefer-template */
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button/Button';
 import WrapperButton from './Button/WrapperButton';
 
 const CalculatorButtons = () => {
   let acumulator = Array(2).fill(0);
+  let operator = '';
+  const [result, setResult] = useState(0);
 
   const handleNumber = (value) => {};
-  const handleClean = () => {};
+
+  const handleClean = () => {
+    acumulator = [];
+    operator = '';
+    setResult(0);
+  };
+
   const handlePercentage = () => {};
   const handleDiv = () => {};
   const handleEqual = () => {};

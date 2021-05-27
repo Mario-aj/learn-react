@@ -29,7 +29,26 @@ const CalculatorButtons = ({ handleResult }) => {
   const handleEqual = () => {
     if (!operator.trim()) setResult(beforeOperator);
 
-    setResult(beforeOperator + afterOperator);
+    switch (operator) {
+      case '/': {
+        setResult(beforeOperator / afterOperator);
+        break;
+      }
+
+      case '*': {
+        setResult(beforeOperator * afterOperator);
+        break;
+      }
+
+      case '-': {
+        setResult(beforeOperator - afterOperator);
+        break;
+      }
+
+      default:
+        setResult(beforeOperator / afterOperator);
+    }
+
     setBeforeOperator(result);
     setAfterOperator(0);
   };

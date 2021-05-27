@@ -4,22 +4,19 @@ import Button from './Button/Button';
 import WrapperButton from './Button/WrapperButton';
 
 const CalculatorButtons = ({ handleResult }) => {
-  const [beforeOperator, setBeforeOperator] = useState(0);
-  const [afterOperator, setAfterOperator] = useState(0);
+  const [beforeOperator, setBeforeOperator] = useState('');
+  const [afterOperator, setAfterOperator] = useState('');
   const [operator, setOperator] = useState('');
   const [result, setResult] = useState(0);
 
   useEffect(() => handleResult(result), [result]);
 
   const handleNumber = (e) => {
-    console.log(e.target.innerText);
-    /*
     if (operator.trim())
-      setAfterOperator(Number(String(afterOperator) + '' + String(value)));
-    else setBeforeOperator(Number(String(beforeOperator) + '' + String(value)));
+      setAfterOperator(afterOperator + '' + e.target.innerText);
+    else setBeforeOperator(beforeOperator + '' + e.target.innerText);
 
     console.log(beforeOperator, afterOperator, result);
-    */
   };
 
   const handleClean = () => {
@@ -32,24 +29,27 @@ const CalculatorButtons = ({ handleResult }) => {
   const handleEqual = () => {
     if (!operator.trim()) setResult(beforeOperator);
 
+    const firstNumber = Number(beforeOperator);
+    const lastNumber = Number(afterOperator);
+
     switch (operator) {
       case '/': {
-        setResult(beforeOperator / afterOperator);
+        setResult(firstNumber / lastNumber);
         break;
       }
 
       case '*': {
-        setResult(beforeOperator * afterOperator);
+        setResult(firstNumber * lastNumber);
         break;
       }
 
       case '-': {
-        setResult(beforeOperator - afterOperator);
+        setResult(firstNumber - lastNumber);
         break;
       }
 
       default:
-        setResult(beforeOperator / afterOperator);
+        setResult(firstNumber + lastNumber);
     }
 
     setBeforeOperator(result);

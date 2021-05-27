@@ -1,47 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button/Button';
 import WrapperButton from './Button/WrapperButton';
 
-const CalculatorButtons = () => {
-  let acumulator = Array(2).fill(0);
+const CalculatorButtons = ({ handleResult }) => {
+  const [beforeOperator, setBeforeOperator] = useState(0);
+  const [afterOperator, setAfterOperator] = useState(0);
   const [operator, setOperator] = useState('');
   const [result, setResult] = useState(0);
 
+  useEffect(() => handleResult(result), [result]);
+
   const handleNumber = (value) => {
-    if (operator.trim()) return;
+    if (operator.trim())
+      setAfterOperator(Number(String(afterOperator) + '' + String(value)));
+    else setBeforeOperator(Number(String(beforeOperator) + '' + String(value)));
 
-    acumulator[0] = Number(String(acumulator[0]) + '' + String(value));
-
-    console.log(acumulator, result);
+    console.log(beforeOperator, afterOperator, result);
   };
 
   const handleClean = () => {
-    acumulator = [];
-    acumulator.length = 2;
-    acumulator.fill(0);
+    setBeforeOperator(0);
+    setAfterOperator(0);
     setOperator('');
     setResult(0);
   };
 
-  const handlePercentage = () => {
-    setOperator('%');
-  };
-
-  const handleDiv = () => {
-    setOperator('/');
-  };
-
   const handleEqual = () => {
-    if (!operator.trim()) setResult(acumulator[0]);
+    if (!operator.trim()) setResult(beforeOperator);
 
-    setResult(acumulator[0] + acumulator[1]);
-    acumulator[0] = acumulator[1];
-    acumulator[1] = 0;
+    setResult(beforeOperator + afterOperator);
+    setBeforeOperator(result);
+    setAfterOperator(0);
   };
 
-  const handleSum = () => {};
-  const handleSub = () => {};
-  const handleMult = () => {};
+  const handleSum = () => setOperator('+');
+  const handleSub = () => setOperator('-');
+  const handleMult = () => setOperator('*');
+  const handleDiv = () => setOperator('/');
+  const handlePercentage = () => setOperator('%');
+
   const handleDot = () => {};
 
   return (
@@ -128,6 +126,10 @@ const CalculatorButtons = () => {
       </WrapperButton>
     </div>
   );
+};
+
+CalculatorButtons.propTypes = {
+  handleResult: PropTypes.func.isRequired,
 };
 
 export default CalculatorButtons;

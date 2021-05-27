@@ -11,12 +11,15 @@ const CalculatorButtons = ({ handleResult }) => {
 
   useEffect(() => handleResult(result), [result]);
 
-  const handleNumber = (value) => {
+  const handleNumber = (e) => {
+    console.log(e.target.innerText);
+    /*
     if (operator.trim())
       setAfterOperator(Number(String(afterOperator) + '' + String(value)));
     else setBeforeOperator(Number(String(beforeOperator) + '' + String(value)));
 
     console.log(beforeOperator, afterOperator, result);
+    */
   };
 
   const handleClean = () => {
@@ -53,11 +56,7 @@ const CalculatorButtons = ({ handleResult }) => {
     setAfterOperator(0);
   };
 
-  const handleSum = () => setOperator('+');
-  const handleSub = () => setOperator('-');
-  const handleMult = () => setOperator('*');
-  const handleDiv = () => setOperator('/');
-  const handlePercentage = () => setOperator('%');
+  const handleOperator = (e) => setOperator(e.target.innerText);
 
   const handleDot = () => {};
 
@@ -66,71 +65,26 @@ const CalculatorButtons = ({ handleResult }) => {
       <WrapperButton>
         <Button text="AC" intent="secondary" onClick={handleClean} />
         <Button text="+/-" intent="secondary" onClick={() => {}} />
-        <Button text="%" intent="secondary" onClick={handlePercentage} />
-        <Button text="/" intent="symbol" textColor onClick={handleDiv} />
+        <Button text="%" intent="secondary" onClick={handleOperator} />
+        <Button text="/" intent="symbol" textColor onClick={handleOperator} />
       </WrapperButton>
       <WrapperButton>
-        <Button
-          text="7"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(7)}
-        />
-        <Button
-          text="8"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(8)}
-        />
-        <Button
-          text="9"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(9)}
-        />
-        <Button text="x" intent="symbol" textColor onClick={handleMult} />
+        <Button text="7" intent="primary" textColor onClick={handleNumber} />
+        <Button text="8" intent="primary" textColor onClick={handleNumber} />
+        <Button text="9" intent="primary" textColor onClick={handleNumber} />
+        <Button text="x" intent="symbol" textColor onClick={handleOperator} />
       </WrapperButton>
       <WrapperButton>
-        <Button
-          text="4"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(4)}
-        />
-        <Button
-          text="5"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(5)}
-        />
-        <Button
-          text="6"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(6)}
-        />
-        <Button text="-" intent="symbol" textColor onClick={handleSub} />
+        <Button text="4" intent="primary" textColor onClick={handleNumber} />
+        <Button text="5" intent="primary" textColor onClick={handleNumber} />
+        <Button text="6" intent="primary" textColor onClick={handleNumber} />
+        <Button text="-" intent="symbol" textColor onClick={handleOperator} />
       </WrapperButton>
       <WrapperButton>
-        <Button
-          text="1"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(1)}
-        />
-        <Button
-          text="2"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(2)}
-        />
-        <Button
-          text="3"
-          intent="primary"
-          textColor
-          onClick={() => handleNumber(3)}
-        />
-        <Button text="+" intent="symbol" textColor onClick={handleSum} />
+        <Button text="1" intent="primary" textColor onClick={handleNumber} />
+        <Button text="2" intent="primary" textColor onClick={handleNumber} />
+        <Button text="3" intent="primary" textColor onClick={handleNumber} />
+        <Button text="+" intent="symbol" textColor onClick={handleOperator} />
       </WrapperButton>
       <WrapperButton>
         <Button
@@ -138,7 +92,7 @@ const CalculatorButtons = ({ handleResult }) => {
           intent="primary"
           textColor
           className="w-32 pl-6 text-left"
-          onClick={() => handleNumber(0)}
+          onClick={handleNumber}
         />
         <Button text="," intent="primary" textColor onClick={handleDot} />
         <Button text="=" intent="symbol" textColor onClick={handleEqual} />

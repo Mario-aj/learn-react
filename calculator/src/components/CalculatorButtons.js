@@ -4,13 +4,23 @@ import Button from './Button/Button';
 import WrapperButton from './Button/WrapperButton';
 
 const CalculatorButtons = ({ handleResult }) => {
+  // eslint-disable-next-line no-unused-vars
   const [result, setResult] = useState(0);
+  const [number, setNumber] = useState(0);
 
   useEffect(() => handleResult(result), [result]);
 
-  const handleNumber = () => {};
+  useEffect(() => handleResult(number), [number]);
 
-  const handleClean = () => {};
+  const handleNumber = (e) => {
+    setNumber(Number(String(number) + '' + e.target.innerText));
+  };
+
+  const handleClean = () => {
+    handleResult(0);
+    setNumber('0');
+    setResult(0);
+  };
 
   const handleEqual = () => {};
 

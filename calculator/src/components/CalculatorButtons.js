@@ -7,24 +7,24 @@ const CalculatorButtons = ({ handleResult }) => {
   // eslint-disable-next-line no-unused-vars
   const [result, setResult] = useState(0);
   const [number, setNumber] = useState(0);
+  const [operator, setOperator] = useState('');
 
   useEffect(() => handleResult(result), [result]);
 
   useEffect(() => handleResult(number), [number]);
 
   const handleNumber = (e) => {
-    setNumber(Number(String(number) + '' + e.target.innerText));
+    if (!operator) setNumber(Number(String(number) + '' + e.target.innerText));
   };
 
   const handleClean = () => {
-    handleResult(0);
-    setNumber('0');
+    setNumber(0);
     setResult(0);
   };
 
   const handleEqual = () => {};
 
-  const handleOperator = () => {};
+  const handleOperator = (e) => setOperator(e.target.innerText);
 
   const handleDot = () => {};
 

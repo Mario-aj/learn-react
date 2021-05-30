@@ -4,27 +4,53 @@ import Button from './Button/Button';
 import WrapperButton from './Button/WrapperButton';
 
 const CalculatorButtons = ({ handleResult }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [result, setResult] = useState(0);
   const [number, setNumber] = useState(0);
+  const [secondNumber, setSecondNumber] = useState(0);
   const [operator, setOperator] = useState('');
 
-  useEffect(() => handleResult(result), [result]);
-
   useEffect(() => handleResult(number), [number]);
+  useEffect(() => handleResult(secondNumber), [secondNumber]);
+
+  const handleOperator = (e) => setOperator(e.target.innerText);
 
   const handleNumber = (e) => {
     if (!operator) setNumber(Number(String(number) + '' + e.target.innerText));
+    else
+      setSecondNumber(Number(String(secondNumber) + '' + e.target.innerText));
   };
 
   const handleClean = () => {
     setNumber(0);
-    setResult(0);
+    setSecondNumber(0);
+    setOperator('');
   };
 
-  const handleEqual = () => {};
+  const handleEqual = () => {
+    if (!operator) return;
 
-  const handleOperator = (e) => setOperator(e.target.innerText);
+    switch (operator) {
+      case 'x': {
+        handleResult(number * secondNumber);
+        break;
+      }
+
+      case '/': {
+        handleResult(number / secondNumber);
+        break;
+      }
+
+      case '-': {
+        handleResult(number - secondNumber);
+        break;
+      }
+
+      default: {
+        handleResult(number + secondNumber);
+      }
+    }
+
+    setOperator('');
+  };
 
   const handleDot = () => {};
 

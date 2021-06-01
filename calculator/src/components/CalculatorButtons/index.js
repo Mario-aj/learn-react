@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import WrapperButton from '../Button/WrapperButton';
+import { handleEqual } from './Actions';
 
 const CalculatorButtons = ({ handleResult }) => {
   const [number, setNumber] = useState(0);
@@ -22,33 +23,6 @@ const CalculatorButtons = ({ handleResult }) => {
   const handleClean = () => {
     setNumber(0);
     setSecondNumber(0);
-    setOperator('');
-  };
-
-  const handleEqual = () => {
-    if (!operator) return;
-
-    switch (operator) {
-      case 'x': {
-        handleResult(number * secondNumber);
-        break;
-      }
-
-      case '/': {
-        handleResult(number / secondNumber);
-        break;
-      }
-
-      case '-': {
-        handleResult(number - secondNumber);
-        break;
-      }
-
-      default: {
-        handleResult(number + secondNumber);
-      }
-    }
-
     setOperator('');
   };
 
@@ -89,7 +63,20 @@ const CalculatorButtons = ({ handleResult }) => {
           onClick={handleNumber}
         />
         <Button text="," intent="primary" textColor onClick={handleDot} />
-        <Button text="=" intent="symbol" textColor onClick={handleEqual} />
+        <Button
+          text="="
+          intent="symbol"
+          textColor
+          onClick={() =>
+            handleEqual({
+              handleResult,
+              number,
+              operator,
+              secondNumber,
+              setOperator,
+            })
+          }
+        />
       </WrapperButton>
     </div>
   );

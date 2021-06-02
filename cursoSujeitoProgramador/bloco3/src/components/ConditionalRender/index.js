@@ -18,6 +18,8 @@ class ConditionalRender extends Component {
   render() {
     return (
       <>
+        <hr />
+        <h1>Conditional render</h1>
         <div>
           {this.state.number === 1 && <h1>Welcome my friend!</h1>}
           <h3>We're learning Reactjs</h3>

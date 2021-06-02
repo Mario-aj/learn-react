@@ -3,7 +3,7 @@ import React from "react";
 import Member from "./components/Member";
 
 const App = () => {
-  return <Member />;
+  return <Member name="Visitante" />;
 };
 
 export default App;

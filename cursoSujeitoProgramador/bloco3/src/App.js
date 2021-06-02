@@ -1,7 +1,9 @@
 import React from "react";
 
+import Member from "./components/Member";
+
 const App = () => {
-  return <div>Hello World!</div>;
+  return <Member />;
 };
 
 export default App;

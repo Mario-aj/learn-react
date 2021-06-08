@@ -4,18 +4,16 @@ class BasicValidation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      error: "",
+      form: { name: "", email: "", password: "", error: "" },
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const { name, email, password } = this.state;
+    const { name, email, password } = this.state.form;
 
     if (name.trim() && email.trim() && password.trim()) {
       this.setState({ error: "" });
@@ -23,8 +21,15 @@ class BasicValidation extends Component {
     } else this.setState({ error: "Ops! something is missing!" });
   }
 
+  handleChange(e) {
+    let { form } = this.state;
+
+    form[e.target.name] = e.target.value;
+
+    this.setState({ form });
+  }
   render() {
-    const { name, email, password, error } = this.state;
+    const { name, email, password, error } = this.state.form;
 
     return (
       <div>
@@ -35,8 +40,9 @@ class BasicValidation extends Component {
             <label>Name: </label>
             <input
               type="text"
+              name="name"
               value={name}
-              onChange={(e) => this.setState({ name: e.target.value })}
+              onChange={this.handleChange}
             />
           </div>
 
@@ -44,8 +50,9 @@ class BasicValidation extends Component {
             <label>E-mail: </label>
             <input
               type="email"
+              name="email"
               value={email}
-              onChange={(e) => this.setState({ email: e.target.value })}
+              onChange={this.handleChange}
             />
           </div>
 
@@ -53,14 +60,21 @@ class BasicValidation extends Component {
             <label>Password: </label>
             <input
               type="password"
+              name="password"
               value={password}
-              onChange={(e) => this.setState({ password: e.target.value })}
+              onChange={this.handleChange}
             />
           </div>
           <br />
 
           <button type="submit">Submit</button>
         </form>
+
+        <pre>
+          <span>{name}</span> <br />
+          <span>{email}</span> <br />
+          <span>{password}</span>
+        </pre>
       </div>
     );
   }

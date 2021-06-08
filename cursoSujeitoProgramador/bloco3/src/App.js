@@ -4,7 +4,8 @@ import React from "react";
 // import ConditionalRender from "./components/ConditionalRender";
 // import Lists from "./components/Lists";
 // import BasicForm from "./components/form/BasicForm";
-import BasicValidation from "./components/form/BasicValidation";
+// import BasicValidation from "./components/form/BasicValidation";
+import Project from "./Project";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
       <ConditionalRender />
       <Lists /> */}
       {/* <BasicForm /> */}
-      <BasicValidation />
+      {/* <BasicValidation /> */}
+      <Project />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class BasicValidation extends Component {
+class Methods extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +36,12 @@ class BasicValidation extends Component {
     form[name] = value;
 
     this.setState({ form });
+  }
+}
+
+class BasicValidation extends Methods {
+  constructor(props) {
+    super(props);
   }
 
   render() {

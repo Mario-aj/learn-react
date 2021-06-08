@@ -9,6 +9,7 @@ class BasicValidation extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.updateForm = this.updateForm.bind(this);
   }
 
   onSubmit(e) {
@@ -16,18 +17,27 @@ class BasicValidation extends Component {
     const { name, email, password } = this.state.form;
 
     if (name.trim() && email.trim() && password.trim()) {
-      this.setState({ error: "" });
+      this.updateForm({ name: "error", value: "" });
       alert(`name: ${name} \nemail: ${email} \n password: ${password}`);
-    } else this.setState({ error: "Ops! something is missing!" });
+    } else
+      this.updateForm({ name: "error", value: "Ops! something is missing!" });
   }
 
   handleChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.updateForm({ name, value });
+  }
+
+  updateForm({ name, value }) {
     let { form } = this.state;
 
-    form[e.target.name] = e.target.value;
+    form[name] = value;
 
     this.setState({ form });
   }
+
   render() {
     const { name, email, password, error } = this.state.form;
 

@@ -25,7 +25,7 @@ class RandomPhrases extends Component {
       <div className="container">
         <img src={Banner} alt="bannerUrl" className="img" />
         <Button
-          text="Generate new phrases"
+          children="Generate new phrases"
           onClick={this.generatePhrase}
           className="btn"
           type="button"

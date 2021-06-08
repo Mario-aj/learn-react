@@ -13,7 +13,7 @@ class BasicValidation extends Component {
   onSubmit(e) {
     e.preventDefault();
     const { name } = this.state;
-    alert({ name });
+    alert(name);
   }
 
   render() {
@@ -32,6 +32,7 @@ class BasicValidation extends Component {
               onChange={(e) => this.setState({ name: e.target.value })}
             />
           </div>
+          <br />
 
           <button type="submit">Submit</button>
         </form>

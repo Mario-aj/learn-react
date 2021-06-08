@@ -1,43 +1,4 @@
-import React, { Component } from "react";
-
-class Methods extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      form: { name: "", email: "", password: "", error: "" },
-    };
-
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.updateForm = this.updateForm.bind(this);
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    const { name, email, password } = this.state.form;
-
-    if (name.trim() && email.trim() && password.trim()) {
-      this.updateForm({ name: "error", value: "" });
-      alert(`name: ${name} \nemail: ${email} \n password: ${password}`);
-    } else
-      this.updateForm({ name: "error", value: "Ops! something is missing!" });
-  }
-
-  handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    this.updateForm({ name, value });
-  }
-
-  updateForm({ name, value }) {
-    let { form } = this.state;
-
-    form[name] = value;
-
-    this.setState({ form });
-  }
-}
+import Methods from "./Methods";
 
 class BasicValidation extends Methods {
   constructor(props) {
@@ -58,7 +19,7 @@ class BasicValidation extends Methods {
               type="text"
               name="name"
               value={name}
-              onChange={this.handleChange}
+              onChange={this.onChange}
             />
           </div>
 
@@ -68,7 +29,7 @@ class BasicValidation extends Methods {
               type="email"
               name="email"
               value={email}
-              onChange={this.handleChange}
+              onChange={this.onChange}
             />
           </div>
 
@@ -78,7 +39,7 @@ class BasicValidation extends Methods {
               type="password"
               name="password"
               value={password}
-              onChange={this.handleChange}
+              onChange={this.onChange}
             />
           </div>
           <br />

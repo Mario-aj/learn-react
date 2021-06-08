@@ -7,6 +7,8 @@ import React from "react";
 // import BasicValidation from "./components/form/BasicValidation";
 import Project from "./Project";
 
+import "./index.css";
+
 const App = () => {
   return (
     <>

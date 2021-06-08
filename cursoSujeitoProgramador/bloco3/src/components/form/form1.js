@@ -6,11 +6,12 @@ class Form extends Component {
     this.state = {
       email: "",
       password: "",
+      gender: "Male",
     };
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, gender } = this.state;
     return (
       <div>
         <div>
@@ -22,7 +23,7 @@ class Form extends Component {
             onChange={(e) => this.setState({ email: e.target.value })}
           />
         </div>
-        <br />
+
         <div>
           <label htmlFor="password">Password: </label>
           <input
@@ -33,7 +34,20 @@ class Form extends Component {
           />
         </div>
 
-        <pre>{(email, password)}</pre>
+        <select
+          name="gender"
+          value={gender}
+          onChange={(e) => this.setState({ gender: e.target.value })}
+        >
+          <option value="male">Male</option>
+          <option value="Famile">Famile</option>
+        </select>
+
+        <pre>
+          <span>{email}</span> <br />
+          <span>{password}</span> <br />
+          <span>{gender}</span>
+        </pre>
       </div>
     );
   }

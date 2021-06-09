@@ -12,7 +12,7 @@ class StopWatch extends StopWatchLogic {
       <div className="container">
         <FiCircle color="#fff" size={350} className="circle" />
         <p className="stopwatch">
-          {this.formated(minute)}:{this.formated(watch.toFixed(1))}
+          {this.formatedNumber(minute)}:{this.formatedNumber(watch.toFixed(1))}
         </p>
         <div className="btn-container">
           <a onClick={this.Play} className="button">

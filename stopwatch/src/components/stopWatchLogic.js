@@ -48,7 +48,7 @@ class StopWhatLogic extends Component {
     this.setState(state);
   }
 
-  formated(number) {
+  formatedNumber(number) {
     return number >= 10 ? number : `0${number}`;
   }
 }

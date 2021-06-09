@@ -10,7 +10,7 @@ class StopWatch extends StopWatchLogic {
 
     return (
       <div className="container">
-        <FiCircle color="#fff" size={320} className="circle" />
+        <FiCircle color="#fff" size={350} className="circle" />
         <p className="stopwatch">
           {this.formated(minute)}:{this.formated(watch.toFixed(1))}
         </p>

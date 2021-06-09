@@ -6,6 +6,7 @@ class StopWhatLogic extends Component {
     this.state = {
       watch: 0,
       isRunning: false,
+      minute: 0,
     };
 
     this.timer = null;
@@ -16,9 +17,15 @@ class StopWhatLogic extends Component {
   Play() {
     if (this.timer === null) {
       this.timer = setInterval(() => {
-        let { watch } = this.state;
-        watch += 0.1;
-        this.setState({ watch });
+        let state = this.state;
+        if (state.watch.toFixed(1) === "10.9") {
+          state.minute += 1;
+          state.watch = 0;
+          this.setState(this.state);
+        } else {
+          state.watch += 0.1;
+          this.setState(state);
+        }
       }, 100);
 
       this.setState({ isRunning: true });
@@ -35,6 +42,7 @@ class StopWhatLogic extends Component {
     let state = this.state;
 
     state.watch = 0;
+    state.minute = 0;
     state.isRunning = false;
 
     this.setState(state);

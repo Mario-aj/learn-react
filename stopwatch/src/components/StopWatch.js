@@ -6,12 +6,14 @@ import "./index.css";
 
 class StopWatch extends StopWatchLogic {
   render() {
-    const { watch, isRunning } = this.state;
+    const { watch, isRunning, minute } = this.state;
 
     return (
       <div className="container">
         <FiCircle color="#fff" size={320} className="circle" />
-        <p className="stopwatch">{watch.toFixed(1)}</p>
+        <p className="stopwatch">
+          {minute}:{watch.toFixed(1)}
+        </p>
         <div className="btn-container">
           <a onClick={this.Play} className="button">
             {isRunning ? (

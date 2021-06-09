@@ -13,6 +13,7 @@ class StopWatch extends Component {
     };
     this.timer = null;
     this.Play = this.Play.bind(this);
+    this.Clear = this.Clear.bind(this);
   }
 
   Play() {
@@ -31,6 +32,17 @@ class StopWatch extends Component {
     }
   }
 
+  Clear() {
+    clearInterval(this.timer);
+    this.timer = null;
+    let state = this.state;
+
+    state.watch = 0;
+    state.isRunning = false;
+
+    this.setState(state);
+  }
+
   render() {
     const { watch, isRunning } = this.state;
 
@@ -47,7 +59,7 @@ class StopWatch extends Component {
             )}
           </a>
 
-          <a className="button">
+          <a onClick={this.Clear} className="button">
             <FiPower color="#fff" size={50} />
           </a>
         </div>

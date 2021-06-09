@@ -18,7 +18,7 @@ class StopWhatLogic extends Component {
     if (this.timer === null) {
       this.timer = setInterval(() => {
         let state = this.state;
-        if (state.watch.toFixed(1) === "10.9") {
+        if (state.watch.toFixed(1) === "59.9") {
           state.minute += 1;
           state.watch = 0;
           this.setState(this.state);

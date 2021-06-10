@@ -15,7 +15,7 @@ class StopWatch extends StopWatchLogic {
           {this.formatedNumber(minute)}:{this.formatedNumber(watch.toFixed(1))}
         </p>
         <div className="btn-container">
-          <a onClick={this.Play} className="button">
+          <a onClick={this.StartAndStop} className="button">
             {isRunning ? (
               <FiPause color="#fff" size={50} />
             ) : (

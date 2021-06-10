@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class StopWhatLogic extends Component {
+class Play extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,11 +10,10 @@ class StopWhatLogic extends Component {
     };
 
     this.timer = null;
-    this.Play = this.Play.bind(this);
-    this.Clear = this.Clear.bind(this);
+    this.StartAndStop = this.StartAndStop.bind(this);
   }
 
-  Play() {
+  StartAndStop() {
     if (this.timer === null) {
       this.timer = setInterval(() => {
         let state = this.state;
@@ -35,6 +34,13 @@ class StopWhatLogic extends Component {
       this.setState({ isRunning: false });
     }
   }
+}
+
+class PowerOff extends Play {
+  constructor(props) {
+    super(props);
+    this.Clear = this.Clear.bind(this);
+  }
 
   Clear() {
     clearInterval(this.timer);
@@ -47,7 +53,9 @@ class StopWhatLogic extends Component {
 
     this.setState(state);
   }
+}
 
+class StopWhatLogic extends PowerOff {
   formatedNumber(number) {
     return number >= 10 ? number : `0${number}`;
   }

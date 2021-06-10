@@ -11,7 +11,7 @@ class EndCounting extends Start {
     this.timer = null;
     let state = this.state;
 
-    state.watch = 0;
+    state.second = 0;
     state.minute = 0;
     state.isRunning = false;
 

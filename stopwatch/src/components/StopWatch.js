@@ -6,13 +6,13 @@ import "./index.css";
 
 class StopWatch extends StopWatchLogic {
   render() {
-    const { watch, isRunning, minute } = this.state;
+    const { second, isRunning, minute } = this.state;
 
     return (
       <div className="container">
         <FiCircle color="#fff" size={350} className="circle" />
         <p className="stopwatch">
-          {this.formatedNumber(minute)}:{this.formatedNumber(watch.toFixed(1))}
+          {this.formatedNumber(minute)}:{this.formatedNumber(second.toFixed(1))}
         </p>
         <div className="btn-container">
           <a onClick={this.StartAndStop} className="button">

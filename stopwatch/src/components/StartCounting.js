@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Start extends Component {
+class StartCounting extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,4 +36,4 @@ class Start extends Component {
   }
 }
 
-export default Start;
+export default StartCounting;

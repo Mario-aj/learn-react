@@ -1,6 +1,6 @@
 import EndCounting from "./EndCounting";
 
-class StopWhatLogic extends EndCounting {
+class StopWatchLogic extends EndCounting {
   constructor(props) {
     super(props);
     this.formatedNumber = this.formatedNumber.bind(this);
@@ -11,4 +11,4 @@ class StopWhatLogic extends EndCounting {
   }
 }
 
-export default StopWhatLogic;
+export default StopWatchLogic;

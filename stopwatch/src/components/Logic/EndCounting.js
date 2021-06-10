@@ -1,4 +1,4 @@
-import Start from "./Start";
+import Start from "./StartCounting";
 
 class EndCounting extends Start {
   constructor(props) {

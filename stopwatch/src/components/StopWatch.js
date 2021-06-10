@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FiCircle, FiPlay, FiPause, FiPower } from "react-icons/fi";
 
-import StopWatchLogic from "./stopWatchLogic";
+import StopWatchLogic from "./Logic";
 import "./index.css";
 
 class StopWatch extends StopWatchLogic {

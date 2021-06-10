@@ -1,6 +1,6 @@
-import EndCount from "./EndCount";
+import EndCounting from "./EndCounting";
 
-class StopWhatLogic extends EndCount {
+class StopWhatLogic extends EndCounting {
   formatedNumber(number) {
     return number >= 10 ? number : `0${number}`;
   }

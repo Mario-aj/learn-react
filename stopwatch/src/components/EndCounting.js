@@ -1,6 +1,6 @@
 import Start from "./Start";
 
-class EndCount extends Start {
+class EndCounting extends Start {
   constructor(props) {
     super(props);
     this.Clear = this.Clear.bind(this);
@@ -19,4 +19,4 @@ class EndCount extends Start {
   }
 }
 
-export default EndCount;
+export default EndCounting;

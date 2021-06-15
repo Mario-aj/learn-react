@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 400px;
+  height: 300px;
+  margin-top: 60px;
+
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.phrase {
+  font-style: italic;
+  color: orange;
+  font-weight: 500;
+}
+
+.btn {
+  padding: 8px;
+  background: #2a2a2a;
+  color: orange;
+  border-radius: 4px;
+  margin-top: 16px;
+  border-width: 0;
+  cursor: pointer;
+}

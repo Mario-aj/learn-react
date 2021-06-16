@@ -7,10 +7,8 @@ class Post extends Component {
     return (
       <div className="container">
         <article className="post">
-          <div className="headerArticle">
-            <p className="title">{titulo}</p>
-            <span className="category">{categoria}</span>
-          </div>
+          <p className="title">{titulo}</p>
+          <span className="category">{categoria}</span>
           <img src={capa} alt="img" className="image" />
 
           <p className="subtitle">{subtitulo}</p>

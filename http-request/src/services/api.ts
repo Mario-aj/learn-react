@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export interface Response {
   id: number;
@@ -9,10 +9,10 @@ export interface Response {
 }
 
 const api = axios.create({
-  baseURL: "https://sujeitoprogramador.com/rn-api/",
+  baseURL: 'https://sujeitoprogramador.com/rn-api/',
 });
 
 export const getPosts = async () => {
-  const response: Response[] = await api.get("?api=posts");
+  const response: Response[] = await api.get('?api=posts');
   return response;
 };

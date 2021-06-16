@@ -1,6 +1,6 @@
-import { Component } from "react";
-import Post from "./components/Post";
-import { getPosts, Response } from "./services/api";
+import { Component } from 'react';
+import Post from './components/Post';
+import { getPosts, Response } from './services/api';
 
 interface MyState {
   posts: Response[];
@@ -21,7 +21,7 @@ class App extends Component<{}, MyState> {
     const { posts } = this.state;
     return (
       <div className="App">
-        {posts.map((post) => (
+        {posts.map(post => (
           <Post key={post.id} post={post} />
         ))}
       </div>

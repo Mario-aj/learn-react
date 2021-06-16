@@ -12,6 +12,7 @@ class Post extends Component {
           <img src={capa} alt="img" className="image" />
 
           <p className="subtitle">{subtitulo}</p>
+          <button type="button">Acessar</button>
         </article>
       </div>
     );

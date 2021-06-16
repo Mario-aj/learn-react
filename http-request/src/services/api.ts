@@ -1,11 +1,7 @@
 import axios from 'axios';
 
-export interface Response {
-  id: number;
-  titulo: string;
-  capa: string;
-  subtitulo: string;
-  categoria: string;
+interface Resp {
+  data: Array<{}>;
 }
 
 const api = axios.create({
@@ -13,6 +9,6 @@ const api = axios.create({
 });
 
 export const getPosts = async () => {
-  const response: Response[] = await api.get('?api=posts');
+  const response: Resp = await api.get('?api=posts');
   return response;
 };

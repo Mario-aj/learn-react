@@ -1,9 +1,17 @@
 import { Component } from 'react';
 import Post from './components/Post';
-import { getPosts, Response } from './services/api';
+import { getPosts } from './services/api';
+
+export interface Response {
+  id: number;
+  titulo: string;
+  capa: string;
+  subtitulo: string;
+  categoria: string;
+}
 
 interface MyState {
-  posts: Response[];
+  posts: Array<Response>;
 }
 
 class App extends Component<{}, MyState> {
@@ -13,17 +21,20 @@ class App extends Component<{}, MyState> {
   }
 
   async componentDidMount() {
-    const posts = await getPosts();
+    const response = await getPosts();
+    console.log(response);
+    const posts = response.data;
     this.setState({ posts });
   }
 
   render() {
     const { posts } = this.state;
+    console.log(posts instanceof Object);
     return (
       <div className="App">
-        {posts.map(post => (
+        {/* {posts.map<JSX.Element>(post => (
           <Post key={post.id} post={post} />
-        ))}
+        ))} */}
       </div>
     );
   }

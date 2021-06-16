@@ -1,4 +1,4 @@
-import { Response } from '../../services/api';
+import { Response } from '../../App';
 
 interface PostDTO {
   post: Response;

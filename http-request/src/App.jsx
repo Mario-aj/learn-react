@@ -23,6 +23,9 @@ class App extends Component {
     const { posts } = this.state;
     return (
       <div className="App">
+        <header>
+          <strong>LEARNING ABOUT REAQUEST IN REACTJS</strong>
+        </header>
         {posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}

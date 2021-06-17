@@ -1,8 +1,8 @@
-import { Component } from 'react';
+import Todo from '../Todo';
 
-class TodoList extends Component {
+class TodoList extends Todo {
   render() {
-    const { todo } = this.props;
+    const { todo } = this.state;
 
     return (
       <ul>

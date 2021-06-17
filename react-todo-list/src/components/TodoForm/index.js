@@ -7,7 +7,7 @@ const TodoForm = ({ addTask, task, handleTaskInputChange }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form">
       <input
         type="text"
         value={task}

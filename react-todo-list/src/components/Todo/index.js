@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
+import TodoForm from '../TodoForm';
+import TodoList from '../TodoList';
 
 class Todo extends Component {
   constructor(props) {
@@ -24,10 +26,25 @@ class Todo extends Component {
     };
 
     this.setState({ todo: [...this.state.todo, newTask] });
+    this.setState({ task: '' });
   }
 
   handleTaskInputChange(event) {
     this.setState({ task: event.target.value });
+  }
+
+  render() {
+    const { task, todo } = this.state;
+    return (
+      <>
+        <TodoForm
+          task={task}
+          handleTaskInputChange={this.handleTaskInputChange}
+          addTodo={this.addTodo}
+        />
+        <TodoList todo={todo} />
+      </>
+    );
   }
 }
 

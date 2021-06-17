@@ -1,29 +1,17 @@
-import Todo from '../Todo';
 import './styles.css';
 
-class TodoForm extends Todo {
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit(e) {
+const TodoForm = ({ addTodo, task, handleTaskInputChange }) => {
+  const onSubmit = e => {
     e.preventDefault();
-    this.addTodo();
-  }
+    addTodo();
+  };
 
-  render() {
-    return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          value={this.state.task}
-          onChange={this.handleTaskInputChange}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="text" value={task} onChange={handleTaskInputChange} />
+      <button type="submit">Add Todo</button>
+    </form>
+  );
+};
 
 export default TodoForm;

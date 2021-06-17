@@ -8,8 +8,15 @@ const TodoForm = ({ addTodo, task, handleTaskInputChange }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type="text" value={task} onChange={handleTaskInputChange} />
-      <button type="submit">Add Todo</button>
+      <input
+        type="text"
+        value={task}
+        onChange={handleTaskInputChange}
+        className="taskInput"
+      />
+      <button type="submit" className="addButton">
+        Add Todo
+      </button>
     </form>
   );
 };

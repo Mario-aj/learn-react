@@ -17,6 +17,19 @@ class Todo extends Component {
     this.removeTask = this.removeTask.bind(this);
   }
 
+  componentDidMount() {
+    let todo = localStorage.getItem('todo-list');
+    if (todo) {
+      todo = JSON.parse(todo);
+      this.setState({ todo });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.todo !== this.state.todo)
+      localStorage.setItem('todo-list', JSON.stringify(this.state.todo));
+  }
+
   addTask() {
     const { task } = this.state;
     if (!task.trim()) return;

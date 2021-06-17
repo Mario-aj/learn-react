@@ -59,8 +59,8 @@ class Todo extends Component {
     this.setState({ todo });
   }
 
-  handleTaskInputChange(event) {
-    this.setState({ task: event.target.value });
+  handleTaskInputChange(task) {
+    this.setState({ task });
   }
 
   render() {

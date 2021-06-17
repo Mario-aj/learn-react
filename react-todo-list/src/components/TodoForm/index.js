@@ -11,7 +11,7 @@ const TodoForm = ({ addTask, task, handleTaskInputChange }) => {
       <input
         type="text"
         value={task}
-        onChange={handleTaskInputChange}
+        onChange={event => handleTaskInputChange(event.target.value)}
         className="taskInput"
       />
       <button type="submit" className="addButton">

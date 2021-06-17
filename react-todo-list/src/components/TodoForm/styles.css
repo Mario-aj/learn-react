@@ -1,0 +1,35 @@
+input {
+  padding: 6px;
+  border: none;
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 4px;
+
+  color: #2c2828;
+  font-size: 1rem;
+
+  transition: all 0.5s;
+}
+
+input:focus {
+  border-color: #669cec;
+}
+
+button {
+  padding: 6px;
+  border: 1px solid #669cec;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+
+  color: #669cec;
+  font-size: 1rem;
+  font-weight: bold;
+
+  transition: all 0.5s;
+}
+
+button:hover {
+  background: #669cec;
+  color: #fff;
+}

@@ -1,16 +1,16 @@
 import './styles.css';
 
 const TodoList = ({ todo, removetodo }) => (
-  <ul>
+  <div className="list">
     {todo.map(item => (
-      <li key={item.id}>
+      <div key={item.id} className="listItems">
         <input
           type="checkbox"
           checked={item.completed}
           onChange={() => {}}
           className="taskCheckbox"
         />
-        <p>{item.task}</p>
+        <p className="taskDescription">{item.task}</p>
         <button
           type="button"
           onClick={() => removetodo}
@@ -18,9 +18,9 @@ const TodoList = ({ todo, removetodo }) => (
         >
           X
         </button>
-      </li>
+      </div>
     ))}
-  </ul>
+  </div>
 );
 
 export default TodoList;

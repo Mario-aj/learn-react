@@ -1,6 +1,44 @@
+.list {
+  width: 100%;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.listItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background: #fff;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  padding: 0 12px;
+}
 .taskCheckbox {
+  width: 18px;
+  height: 18px;
+  border: none;
+
+  cursor: pointer;
+}
+.taskDescription {
+  margin-right: 12px;
+  margin-left: 12px;
+
+  font-size: 1rem;
+  color: #2a2a2a;
+  font-weight: bold;
+}
+.removeButton {
+  color: #ec0519;
+  background: none;
+  cursor: pointer;
+
+  transition: color 0.5s;
 }
 
-.removeButton {
-  color: red;
+.removeButton:hover {
+  color: #eb0f21;
 }

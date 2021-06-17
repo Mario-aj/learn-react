@@ -1,13 +1,11 @@
-import { Component } from 'react';
-import { v4 as uuid } from 'uuid';
+import Todo from '../Todo';
 import './styles.css';
 
-class TodoForm extends Component {
+class TodoForm extends Todo {
   constructor(props) {
     super(props);
     this.state = {
       task: '',
-      todo: [],
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -16,16 +14,7 @@ class TodoForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     const { task } = this.state;
-    const todo = {
-      id: uuid(),
-      task,
-      completed: false,
-    };
-
-    this.setState({ todo: [...this.state.todo, todo] });
-    this.setState({ task: '' });
-
-    console.log(this.state.todo);
+    this.addTodo(task);
   }
 
   render() {

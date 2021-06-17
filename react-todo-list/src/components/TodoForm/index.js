@@ -1,9 +1,9 @@
 import './styles.css';
 
-const TodoForm = ({ addTodo, task, handleTaskInputChange }) => {
+const TodoForm = ({ addTask, task, handleTaskInputChange }) => {
   const onSubmit = e => {
     e.preventDefault();
-    addTodo();
+    addTask();
   };
 
   return (

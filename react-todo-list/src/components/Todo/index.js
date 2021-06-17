@@ -11,13 +11,13 @@ class Todo extends Component {
       task: '',
     };
 
-    this.addTodo = this.addTodo.bind(this);
+    this.addTask = this.addTask.bind(this);
     this.handleTaskInputChange = this.handleTaskInputChange.bind(this);
     this.completTask = this.completTask.bind(this);
     this.removeTask = this.removeTask.bind(this);
   }
 
-  addTodo() {
+  addTask() {
     const { task } = this.state;
     if (!task.trim()) return;
 
@@ -57,7 +57,7 @@ class Todo extends Component {
         <TodoForm
           task={task}
           handleTaskInputChange={this.handleTaskInputChange}
-          addTodo={this.addTodo}
+          addTask={this.addTask}
         />
         <TodoList
           todo={todo}

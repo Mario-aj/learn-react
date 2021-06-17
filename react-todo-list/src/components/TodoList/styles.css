@@ -14,6 +14,12 @@
   border-radius: 4px;
   padding: 0 12px;
 }
+.checkTask {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
 .taskCheckbox {
   width: 18px;
   height: 18px;

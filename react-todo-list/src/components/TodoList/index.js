@@ -5,18 +5,20 @@ const TodoList = ({ todo, removeTask, completTask }) => (
   <div className="list">
     {todo.map(item => (
       <div key={item.id} className="listItems">
-        <input
-          type="checkbox"
-          checked={item.completed}
-          onChange={() => completTask(item.id)}
-          className="taskCheckbox"
-        />
-        <p
-          className="taskDescription"
-          style={{ textDecoration: item.completed ? 'line-through' : 'none' }}
-        >
-          {item.task}
-        </p>
+        <div className="checkTask" onClick={() => completTask(item.id)}>
+          <input
+            type="checkbox"
+            checked={item.completed}
+            onChange={() => {}}
+            className="taskCheckbox"
+          />
+          <p
+            className="taskDescription"
+            style={{ textDecoration: item.completed ? 'line-through' : 'none' }}
+          >
+            {item.task}
+          </p>
+        </div>
         <button
           type="button"
           onClick={() => removeTask(item.id)}

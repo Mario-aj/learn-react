@@ -1,7 +1,7 @@
 import { FaTrash } from 'react-icons/fa';
 import './styles.css';
 
-const TodoList = ({ todo, removetodo, completTask }) => (
+const TodoList = ({ todo, removeTask, completTask }) => (
   <div className="list">
     {todo.map(item => (
       <div key={item.id} className="listItems">
@@ -19,7 +19,7 @@ const TodoList = ({ todo, removetodo, completTask }) => (
         </p>
         <button
           type="button"
-          onClick={() => removetodo}
+          onClick={() => removeTask(item.id)}
           className="removeButton"
         >
           <FaTrash size={14} color="#ff0000" />

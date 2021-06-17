@@ -32,13 +32,9 @@
   font-weight: bold;
 }
 .removeButton {
-  color: #ec0519;
   background: none;
   cursor: pointer;
+  border: none;
 
-  transition: color 0.5s;
-}
-
-.removeButton:hover {
-  color: #eb0f21;
+  padding: 0;
 }

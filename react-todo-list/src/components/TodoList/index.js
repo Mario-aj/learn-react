@@ -1,3 +1,4 @@
+import { FaTrash } from 'react-icons/fa';
 import './styles.css';
 
 const TodoList = ({ todo, removetodo }) => (
@@ -16,7 +17,7 @@ const TodoList = ({ todo, removetodo }) => (
           onClick={() => removetodo}
           className="removeButton"
         >
-          X
+          <FaTrash size={14} color="#ff0000" />
         </button>
       </div>
     ))}

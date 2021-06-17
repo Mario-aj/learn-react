@@ -4,28 +4,21 @@ import './styles.css';
 class TodoForm extends Todo {
   constructor(props) {
     super(props);
-    this.state = {
-      task: '',
-    };
-
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const { task } = this.state;
-    this.addTodo({ task });
-    this.setState({ task: '' });
+    this.addTodo();
   }
 
   render() {
-    const { task } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
         <input
           type="text"
-          value={task}
-          onChange={event => this.setState({ task: event.target.value })}
+          value={this.state.task}
+          onChange={this.handleTaskInputChange}
         />
         <button type="submit">Add Todo</button>
       </form>

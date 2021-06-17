@@ -6,22 +6,29 @@ class Todo extends Component {
     super(props);
     this.state = {
       todo: [],
+      task: '',
     };
 
     this.addTodo = this.addTodo.bind(this);
+    this.handleTaskInputChange = this.handleTaskInputChange.bind(this);
   }
 
-  addTodo({ task }) {
-    const prevTodo = this.state.todo;
-    const newTodo = {
+  addTodo() {
+    const { task } = this.state;
+    if (!task.trim()) return;
+
+    const newTask = {
       id: uuid(),
       task,
       completed: false,
     };
 
-    const todo = [...prevTodo, newTodo];
+    this.setState({ todo: [...this.state.todo, newTask] });
+    this.setState({ task: '' });
+  }
 
-    this.setState({ todo });
+  handleTaskInputChange(event) {
+    this.setState({ task: event.target.value });
   }
 }
 

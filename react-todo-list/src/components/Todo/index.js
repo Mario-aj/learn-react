@@ -13,6 +13,7 @@ class Todo extends Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.handleTaskInputChange = this.handleTaskInputChange.bind(this);
+    this.completTask = this.completTask.bind(this);
   }
 
   addTodo() {
@@ -29,6 +30,16 @@ class Todo extends Component {
     this.setState({ task: '' });
   }
 
+  completTask(id) {
+    let { todo } = this.state;
+
+    let task = todo.find(item => item.id === id);
+    task.completed = !task.completed;
+    todo = Object.assign(todo, task);
+
+    this.setState({ todo });
+  }
+
   handleTaskInputChange(event) {
     this.setState({ task: event.target.value });
   }
@@ -42,7 +53,7 @@ class Todo extends Component {
           handleTaskInputChange={this.handleTaskInputChange}
           addTodo={this.addTodo}
         />
-        <TodoList todo={todo} />
+        <TodoList todo={todo} completTask={this.completTask} />
       </>
     );
   }

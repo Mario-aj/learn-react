@@ -1,17 +1,22 @@
 import { FaTrash } from 'react-icons/fa';
 import './styles.css';
 
-const TodoList = ({ todo, removetodo }) => (
+const TodoList = ({ todo, removetodo, completTask }) => (
   <div className="list">
     {todo.map(item => (
       <div key={item.id} className="listItems">
         <input
           type="checkbox"
           checked={item.completed}
-          onChange={() => {}}
+          onChange={() => completTask(item.id)}
           className="taskCheckbox"
         />
-        <p className="taskDescription">{item.task}</p>
+        <p
+          className="taskDescription"
+          style={{ textDecoration: item.completed ? 'line-through' : 'none' }}
+        >
+          {item.task}
+        </p>
         <button
           type="button"
           onClick={() => removetodo}

@@ -11,14 +11,17 @@ class Todo extends Component {
     this.addTodo = this.addTodo.bind(this);
   }
 
-  addTodo(task) {
-    const todo = {
+  addTodo({ task }) {
+    const prevTodo = this.state.todo;
+    const newTodo = {
       id: uuid(),
       task,
       completed: false,
     };
 
-    this.setState({ todo: [...this.state.todo, todo] });
+    const todo = [...prevTodo, newTodo];
+
+    this.setState({ todo });
   }
 }
 

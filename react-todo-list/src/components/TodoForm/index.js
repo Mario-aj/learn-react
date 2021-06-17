@@ -14,7 +14,8 @@ class TodoForm extends Todo {
   onSubmit(e) {
     e.preventDefault();
     const { task } = this.state;
-    this.addTodo(task);
+    this.addTodo({ task });
+    this.setState({ task: '' });
   }
 
   render() {

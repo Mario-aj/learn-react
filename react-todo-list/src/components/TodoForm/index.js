@@ -15,7 +15,7 @@ const TodoForm = ({ addTask, task, handleTaskInputChange }) => {
         className="taskInput"
       />
       <button type="submit" className="addButton">
-        Add Todo
+        Add task
       </button>
     </form>
   );

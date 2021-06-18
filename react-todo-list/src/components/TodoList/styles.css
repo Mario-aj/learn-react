@@ -7,18 +7,11 @@
   justify-content: center;
 }
 .listItems {
+  width: 80%;
+
   display: flex;
   align-items: center;
-  justify-content: space-around;
-
-  border-radius: 4px;
-  padding: 0 12px;
-}
-.checkTask {
-  display: flex;
-  align-items: center;
-
-  cursor: pointer;
+  justify-content: space-between;
 }
 .taskCheckbox {
   width: 18px;
@@ -28,12 +21,10 @@
   cursor: pointer;
 }
 .taskDescription {
-  margin-right: 12px;
-  margin-left: 12px;
-
   font-size: 1rem;
   color: #2a2a2a;
   font-weight: bold;
+  text-align: center;
 }
 .removeButton {
   background: none;

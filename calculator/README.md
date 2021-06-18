@@ -12,7 +12,7 @@
   - Prettier
   - craco
 
-## Who to Run
+## How to Run?
   ### `yarn or npm i`
    Install all the dependecies to run this app in your computer.
 

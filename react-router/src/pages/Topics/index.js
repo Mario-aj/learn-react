@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, useHistory } from "react-router-dom";
 import Routes from "./routes";
 
 const Topics = () => {
   const match = useRouteMatch();
+  const history = useHistory();
 
   return (
     <div>
@@ -11,11 +12,37 @@ const Topics = () => {
 
       <ul>
         <li>
-          <Link to={`${match.url}/components`}>Components</Link>
+          <button
+            type="button"
+            onClick={() => history.push(`${match.url}/components`)}
+            style={{
+              cursor: "pointer",
+              padding: 8,
+              margin: 4,
+              color: "#2a2a2a",
+              fontSize: 16,
+              fontWeight: "bold",
+            }}
+          >
+            Components
+          </button>
         </li>
 
         <li>
-          <Link to={`${match.url}/props-vs-state`}>Props vs State</Link>
+          <button
+            type="button"
+            onClick={() => history.push(`${match.url}/props-vs-state`)}
+            style={{
+              cursor: "pointer",
+              padding: 8,
+              margin: 4,
+              color: "#2a2a2a",
+              fontSize: 16,
+              fontWeight: "bold",
+            }}
+          >
+            Props vs State
+          </button>
         </li>
       </ul>
       <Routes />

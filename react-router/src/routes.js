@@ -10,13 +10,13 @@ import Teste from "./pages/Teste";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-      <Route path="/about" exact component={About} />
+      <Route path="/about" component={About} />
       <Route path="/user" component={User} />
       <Route path="/topics" component={Topics} />
       <Route path="/test/:name/:age/:nationality" component={Teste} />
+      <Route path="/" exact>
+        <Home />
+      </Route>
     </Switch>
   );
 };

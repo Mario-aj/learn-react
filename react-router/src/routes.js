@@ -6,6 +6,7 @@ import User from "./pages/User";
 import About from "./pages/About";
 import Topics from "./pages/Topics";
 import Teste from "./pages/Teste";
+import NotFound from "./pages/NotFound";
 
 import { authenticated } from "./utils/atuh";
 
@@ -30,6 +31,7 @@ const Routes = () => {
       <Route path="/" exact>
         <Home />
       </Route>
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 };

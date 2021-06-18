@@ -1,6 +1,7 @@
 # Todo-list.
 
-![Screenshot from 2021-06-17 14-31-11](https://user-images.githubusercontent.com/57181054/122407815-cea75f80-cf79-11eb-8c80-55cd95e27002.png)
+![Screenshot from 2021-06-18 20-18-35](https://user-images.githubusercontent.com/57181054/122607535-a0f21180-d072-11eb-876c-6ae5c5403dab.png)
+
 
 
 This project was created with the purpose of developing and practicing Reactjs knowledge such as components, states, props.

@@ -6,7 +6,7 @@ import "./styles.css";
 const Header = () => (
   <nav className="container">
     <h1>
-      <Link to="/home" className="link">
+      <Link to="/" className="link">
         Home
       </Link>
     </h1>
@@ -20,6 +20,12 @@ const Header = () => (
     <h1>
       <Link to="/user" className="link">
         User
+      </Link>
+    </h1>
+
+    <h1>
+      <Link to="/topics" className="link">
+        Topics
       </Link>
     </h1>
   </nav>

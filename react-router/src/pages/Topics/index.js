@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useRouteMatch, useHistory } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import Routes from "./routes";
 
 const Topics = () => {

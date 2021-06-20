@@ -1,8 +1,15 @@
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./routes";
+import Header from "./components/Hearder";
+import GLobalStyles from "./globalStyles";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello world!</h1>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes />
+      <GLobalStyles dark />
+    </BrowserRouter>
   );
 }
 

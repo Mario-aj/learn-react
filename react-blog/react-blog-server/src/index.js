@@ -1,9 +1,16 @@
 import express from 'express';
+import { config } from 'dotenv';
+config();
+import './services/index';
 
 const app = express();
 
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
   return res.json({ msg: 'Hello world!' });
 });
 
-app.listen(4321, () => console.log('server started on http://localhost:4321'));
+const PORT = process.env.PORT || 4321;
+
+app.listen(PORT, () =>
+  console.log(`server started on http://localhost:${PORT}`)
+);

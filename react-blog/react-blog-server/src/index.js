@@ -1,13 +1,14 @@
 import express from 'express';
 import { config } from 'dotenv';
 config();
-import './services/index';
+
+import './services/mongoDB';
+import Routes from './routes';
 
 const app = express();
+app.use(express.json());
 
-app.get('/login', (req, res) => {
-  return res.json({ msg: 'Hello world!' });
-});
+app.use(Routes);
 
 const PORT = process.env.PORT || 4321;
 

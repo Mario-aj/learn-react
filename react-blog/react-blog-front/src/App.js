@@ -4,7 +4,7 @@ import Header from './components/Hearder';
 import GLobalStyles from './globalStyles';
 
 const App = () => {
-  const darkMode = false;
+  const darkMode = true;
   return (
     <BrowserRouter>
       <Header darkMode={darkMode} />

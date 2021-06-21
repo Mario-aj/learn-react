@@ -9,15 +9,17 @@ export const Container = styled.header`
   align-items: center;
   justify-content: center;
 
-  background-color: #fff;
+  background: ${props => (props.darkMode ? '#fff' : '#2a2a2a')};
+
   margin-bottom: 16px;
+  transition: all 0.6s;
 `;
 
 export const Content = styled.div`
   width: 100%;
   max-width: 860px;
   height: 100%;
-
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,9 +27,10 @@ export const Content = styled.div`
 `;
 
 export const Anchor = styled(Link)`
-  color: #2a2a2a;
+  color: ${props => (props.darkMode ? '#2a2a2a' : '#fff')};
 
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+  transition: all 0.6s;
 `;

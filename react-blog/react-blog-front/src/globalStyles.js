@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const globalStyles = createGlobalStyle`
   *{
@@ -11,11 +11,16 @@ const globalStyles = createGlobalStyle`
 
   html {
     font-size: 90%;
-    color: ${(props) => (props.dark ? "#fff" : "#2a2a2a")};
+    color: ${props => (props.darkMode ? '#fff' : '#2a2a2a')};
+
+    transition: all 0.6s;
   }
 
+
   body {
-   background: ${(props) => (props.dark ? "#2a2a2a" : "#fff")};
+   background: ${props => (props.darkMode ? '#2a2a2a' : '#fff')};
+   transition: all 0.6s;
+
   }
 
   @media(max-width: 450px) {

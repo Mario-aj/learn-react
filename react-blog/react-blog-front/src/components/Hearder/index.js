@@ -1,16 +1,20 @@
 import { Container, Content, Anchor } from './styles';
 
-const Header = ({ name }) => {
+const Header = ({ name, darkMode }) => {
   const props = {
     href: name ? '/dashboard' : '/login',
     title: name ? name : 'Entrar',
   };
 
   return (
-    <Container>
+    <Container darkMode={darkMode}>
       <Content>
-        <Anchor to="/">Programmer's Blog</Anchor>
-        <Anchor to={props.href}>{props.title}</Anchor>
+        <Anchor to="/" darkMode={darkMode}>
+          Programmer's Blog
+        </Anchor>
+        <Anchor to={props.href} darkMode={darkMode}>
+          {props.title}
+        </Anchor>
       </Content>
     </Container>
   );

@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom';
 import { Container, Content, Anchor } from './styles';
 
 const Header = ({ name }) => {

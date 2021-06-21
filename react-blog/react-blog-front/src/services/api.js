@@ -10,6 +10,12 @@ class API {
 
     return storagedData?.token ? true : true;
   }
+
+  async posts() {
+    const response = await api.get('/posts');
+
+    return response.data;
+  }
 }
 
 export default new API();

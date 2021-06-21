@@ -8,7 +8,7 @@ class API {
   authenticated() {
     const storagedData = localStorage.getItem('react-blog');
 
-    return storagedData.token ? true : false;
+    return storagedData?.token ? true : false;
   }
 }
 

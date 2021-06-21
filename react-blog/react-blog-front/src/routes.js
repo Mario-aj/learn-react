@@ -27,10 +27,10 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
 const Routes = () => {
   return (
     <Switch>
-      <PrivateRoutes exact path="/" component={Home} />
-      <PrivateRoutes path="/dashboard" component={Dashboard} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+      <PrivateRoutes path="/dashboard" component={Dashboard} />
+      <PrivateRoutes exact path="/" component={Home} />
     </Switch>
   );
 };

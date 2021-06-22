@@ -5,7 +5,7 @@ class Login {
   async authenticat(req, res) {
     const { email, password } = req.body;
 
-    if (!email.trim() || !password.trim())
+    if (!email?.trim() || !password?.trim())
       return res.status(401).json({ error: 'please, fill all fields' });
 
     const user = await User.findOne({ email });

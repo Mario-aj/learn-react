@@ -47,4 +47,5 @@ export const Description = styled.footer`
   line-height: 1.5rem;
   word-wrap: break-word;
   text-align: justify;
+  text-indent: 2rem;
 `;

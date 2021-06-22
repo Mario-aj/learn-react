@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 import {
@@ -12,7 +12,16 @@ import {
 } from './styles';
 
 const Home = () => {
-  const [posts, _] = useState(api.posts() || []);
+  const [posts, setPosts] = useState(() => []);
+
+  useEffect(() => {
+    async function getPosts() {
+      const response = await api.posts();
+      setPosts(response);
+    }
+
+    getPosts();
+  }, []);
 
   return (
     <Container>
@@ -20,22 +29,12 @@ const Home = () => {
         posts.map(post => (
           <Post>
             <Header>
-              <Title>NWL Together</Title>
-              <Author>@Author: Mario Jorge</Author>
+              <Title>{post.title}</Title>
+              <Author>@Author:{post.author}</Author>
             </Header>
-            <Image
-              src="https://nextlevelweek.com/og/nlw-edition.png"
-              alt="bannerUrl"
-            />
+            <Image src={post.bannerUrl} alt="bannerUrl" />
 
-            <Description>
-              Um evento para dar o próximo passo na sua evolução como
-              programadora ou programador. Um evento para dar o próximo passo na
-              sua evolução como programadora ou programador. Um evento para dar
-              o próximo passo na sua evolução como programadora ou programador.
-              Um evento para dar o próximo passo na sua evolução como
-              programadora ou programador.
-            </Description>
+            <Description>{post.description}</Description>
           </Post>
         ))
       ) : (

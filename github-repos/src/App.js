@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ThemeContext } from './contexts/theme-context';
+import { ThemeProvider } from './contexts/theme-context';
 import Routes from './routes';
 import Header from './components/Header';
 import GlobalStyles from './index.styles';
@@ -11,18 +11,13 @@ function App() {
 
   const onChangeTheme = () => setDark(!dark);
 
-  const value = {
-    dark_theme: dark,
-    onChangeTheme: onChangeTheme,
-  };
-
   return (
     <BrowserRouter>
-      <ThemeContext.Provider value={value}>
+      <ThemeProvider value={{ dark, onChangeTheme }}>
         <Header />
         <Routes />
         <GlobalStyles dark={dark} />
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

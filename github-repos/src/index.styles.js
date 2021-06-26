@@ -23,12 +23,15 @@ export default createGlobalStyle`
 
   body {
     background: ${({ dark }) => (dark ? '#0D2636' : '#fff')};
-    color: ${({ dark }) => (dark ? '#fff' : '#0D2636')};;
+    color: ${({ dark }) => (dark ? '#fff' : '#0D2636')};
     -webkit-font-smoothing: antialiased !important;
 
     transition: all 0.6s;
   }
 
+  #root {
+    padding: 0 16px;
+  }
 
   button {
     cursor: pointer;

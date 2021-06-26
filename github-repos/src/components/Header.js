@@ -3,17 +3,14 @@ import { useTheme } from '../hooks/useTheme';
 import { Container, Content, Title } from './Header.styles';
 
 const Header = () => {
-  const { dark_theme, onChangeTheme } = useTheme();
+  const { dark, onChangeTheme } = useTheme();
+  const ToggleIcon = dark ? FaToggleOn : FaToggleOff;
 
   return (
     <Container>
       <Content>
         <Title>Github-repos</Title>
-        {dark_theme ? (
-          <FaToggleOn size={40} onClick={onChangeTheme} />
-        ) : (
-          <FaToggleOff size={40} onClick={onChangeTheme} />
-        )}
+        <ToggleIcon size={40} onClick={onChangeTheme} />
       </Content>
     </Container>
   );

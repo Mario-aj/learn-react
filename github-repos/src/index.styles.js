@@ -22,10 +22,13 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #0D2636;
-    color: #fff;
+    background: ${({ dark }) => (dark ? '#0D2636' : '#fff')};
+    color: ${({ dark }) => (dark ? '#fff' : '#0D2636')};;
     -webkit-font-smoothing: antialiased !important;
+
+    transition: all 0.6s;
   }
+
 
   button {
     cursor: pointer;

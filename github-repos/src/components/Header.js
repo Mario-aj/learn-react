@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import { useContext } from 'react';
 import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 
+import { ThemeContext } from '../App';
 import { Container, Content, Title } from './Header.styles';
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const onToggle = () => setDarkMode(!darkMode);
+  const { dark_theme, updateTheme } = useContext(ThemeContext);
 
   return (
     <Container>
       <Content>
         <Title>Github-repos</Title>
-        {darkMode ? (
-          <FaToggleOn size={40} onClick={onToggle} />
+        {dark_theme ? (
+          <FaToggleOn size={40} onClick={updateTheme} />
         ) : (
-          <FaToggleOff size={40} onClick={onToggle} />
+          <FaToggleOff size={40} onClick={updateTheme} />
         )}
       </Content>
     </Container>

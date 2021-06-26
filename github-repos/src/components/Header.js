@@ -1,11 +1,9 @@
-import { useContext } from 'react';
 import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
-
-import { ThemeContext } from '../contexts/theme-context';
+import { useTheme } from '../Hooks/useTheme';
 import { Container, Content, Title } from './Header.styles';
 
 const Header = () => {
-  const { dark_theme, updateTheme } = useContext(ThemeContext);
+  const { dark_theme, updateTheme } = useTheme();
 
   return (
     <Container>

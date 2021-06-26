@@ -13,7 +13,7 @@ function App() {
 
   const value = {
     dark_theme: dark,
-    updateTheme: onChangeTheme,
+    onChangeTheme: onChangeTheme,
   };
   return (
     <BrowserRouter>

@@ -14,6 +14,7 @@ export default createGlobalStyle`
 
   html, body, #root {
     min-height: 100%;
+    width: 100%;
   }
   html {
     font-family: Arial, Helvetica, sans-serif;

@@ -1,13 +1,10 @@
-import React, { createContext, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+
+import { ThemeContext } from './contexts/theme-context';
 import Routes from './routes';
 import Header from './components/Header';
 import GlobalStyles from './index.styles';
-
-export const ThemeContext = createContext({
-  dark_theme: true,
-  updateTheme: () => {},
-});
 
 function App() {
   const [dark, setDark] = useState(true);

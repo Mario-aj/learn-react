@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 
-import { ThemeContext } from '../App';
+import { ThemeContext } from '../contexts/theme-context';
 import { Container, Content, Title } from './Header.styles';
 
 const Header = () => {

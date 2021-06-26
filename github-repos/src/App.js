@@ -15,6 +15,7 @@ function App() {
     dark_theme: dark,
     onChangeTheme: onChangeTheme,
   };
+
   return (
     <BrowserRouter>
       <ThemeContext.Provider value={value}>

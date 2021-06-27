@@ -6,11 +6,17 @@ const api = axios.create({
 
 class Api {
   async searchRepo(reposName) {
-    const response = await api.get(`/repos/${reposName}`);
+    try {
+      const response = await api.get(`/repos/${reposName}`);
 
-    if (response.error) return { error: response.error.message };
-
-    return response.data;
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+      return {
+        error:
+          'There is no repo with this name, please, try again with another name',
+      };
+    }
   }
 }
 

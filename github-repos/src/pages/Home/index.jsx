@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTheme } from '../../hooks/useTheme';
 import api from '../../services/api';
 import { Container, Form, SubmitButton } from './styles';
 
 const Home = () => {
   const { dark } = useTheme();
+  const [repositories, setRepositories] = useState([]);
   const [newRepository, setNewRepository] = useState('');
   const [error, setError] = useState('');
 
@@ -12,7 +13,7 @@ const Home = () => {
     (e) => {
       e.preventDefault();
       if (!newRepository.trim()) {
-        setError('please, write a repo name');
+        setError('please, write a repository name');
         return;
       }
 
@@ -23,19 +24,29 @@ const Home = () => {
           setError(response.error);
           return;
         }
+        const repo = {
+          name: response.full_name,
+          id: response.id,
+          language: response.language,
+        };
 
-        console.log(response);
+        setRepositories([...repositories, repo]);
+        setNewRepository('');
       };
 
       onSearchRepo();
     },
-    [newRepository]
+    [newRepository, repositories]
   );
 
   const onChangeInput = (e) => {
     setNewRepository(e.target.value);
     setError('');
   };
+
+  useEffect(() => {
+    console.log(repositories);
+  }, [repositories]);
 
   return (
     <Container dak={dark}>

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FaPlus, FaSpinner } from 'react-icons/fa';
+import { useHistory } from 'react-router-dom';
 import { useTheme } from 'src/hooks/useTheme';
 import api from 'src/services/api';
 import ListRepos from 'src/components/ListRepos';
@@ -7,6 +8,7 @@ import { Container, Form, SubmitButton } from './styles';
 
 const Home = () => {
   const { dark } = useTheme();
+  const history = useHistory();
   const [repositories, setRepositories] = useState([]);
   const [newRepository, setNewRepository] = useState('');
   const [error, setError] = useState('');
@@ -72,11 +74,18 @@ const Home = () => {
     setError('');
   };
 
-  const removeRepo = useCallback(
+  const onRemoveRepo = useCallback(
     (repoId) => {
       setRepositories(repositories.filter((repo) => repo.id !== repoId));
     },
     [repositories]
+  );
+
+  const onDetailsRepo = useCallback(
+    (repoName) => {
+      history.push(`repository/${encodeURIComponent(repoName)}`);
+    },
+    [history]
   );
 
   const SubmitButtonIcon = loading ? FaSpinner : FaPlus;
@@ -98,7 +107,11 @@ const Home = () => {
       </Form>
       {!!error && <span>{error}</span>}
       {repositories.length >= 1 && (
-        <ListRepos repos={repositories} removeRepo={removeRepo} />
+        <ListRepos
+          repos={repositories}
+          onDetailsRepo={onDetailsRepo}
+          onRemoveRepo={onRemoveRepo}
+        />
       )}
     </Container>
   );

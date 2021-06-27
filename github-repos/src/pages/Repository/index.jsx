@@ -1,9 +1,13 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import { Title } from './styles';
 
 const Repository = () => {
-  return <Title>Repository page!</Title>;
+  const params = useParams();
+  const repositoryId = decodeURIComponent(params.repositoryId);
+
+  return <Title>{repositoryId}</Title>;
 };
 
 export default Repository;

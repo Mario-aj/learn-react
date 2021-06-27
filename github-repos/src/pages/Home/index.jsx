@@ -1,9 +1,20 @@
 import React from 'react';
-
-import { Title } from './styles';
+import { useTheme } from '../../hooks/useTheme';
+import { Container, Form, SubmitButton } from './styles';
 
 const Home = () => {
-  return <Title>Home page!</Title>;
+  const { dark } = useTheme();
+
+  return (
+    <Container dak={dark}>
+      <h1>My repositories</h1>
+
+      <Form onSbumit={() => {}}>
+        <input type="text" placeholder="Search repos" />
+        <SubmitButton type="submit">+</SubmitButton>
+      </Form>
+    </Container>
+  );
 };
 
 export default Home;

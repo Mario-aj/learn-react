@@ -7,6 +7,8 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 32px;
 `;
 
 export const Content = styled.div`
@@ -23,11 +25,20 @@ export const Content = styled.div`
   svg {
     cursor: pointer;
   }
+
+  div {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
 `;
 
 export const Title = styled.strong`
   font-size: 24px;
-  color: red;
+  color: #e05656;
 `;
 
 export const Toggle = styled.div``;

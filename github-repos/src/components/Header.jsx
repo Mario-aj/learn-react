@@ -1,4 +1,4 @@
-import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
+import { FaToggleOff, FaToggleOn, FaGithub } from 'react-icons/fa';
 import { useTheme } from '../hooks/useTheme';
 import { Container, Content, Title } from './Header.styles';
 
@@ -9,7 +9,10 @@ const Header = () => {
   return (
     <Container>
       <Content>
-        <Title>Github-repos</Title>
+        <div>
+          <FaGithub size={45} />
+          <Title>Github-repos</Title>
+        </div>
         <ToggleIcon size={40} onClick={onChangeTheme} />
       </Content>
     </Container>

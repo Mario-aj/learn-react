@@ -48,6 +48,7 @@ const Home = () => {
 
         if (response.error) {
           setError(response.error);
+          setLoading(false);
           return;
         }
 
@@ -71,9 +72,12 @@ const Home = () => {
     setError('');
   };
 
-  const removeRepo = useCallback((repoId) => {
-    setRepositories(repositories.filter((repo) => repo.id !== repoId));
-  });
+  const removeRepo = useCallback(
+    (repoId) => {
+      setRepositories(repositories.filter((repo) => repo.id !== repoId));
+    },
+    [repositories]
+  );
 
   const SubmitButtonIcon = loading ? FaSpinner : FaPlus;
 

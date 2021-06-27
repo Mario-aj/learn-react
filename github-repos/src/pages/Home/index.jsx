@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { FaPlus, FaSpinner } from 'react-icons/fa';
 import { useTheme } from 'src/hooks/useTheme';
 import api from 'src/services/api';
+import ListRepos from 'src/components/ListRepos';
 import { Container, Form, SubmitButton } from './styles';
 
 const Home = () => {
@@ -32,7 +33,6 @@ const Home = () => {
         const repo = {
           name: response.full_name,
           id: response.id,
-          language: response.language,
         };
 
         setRepositories([...repositories, repo]);
@@ -49,6 +49,10 @@ const Home = () => {
     setNewRepository(e.target.value);
     setError('');
   };
+
+  const removeRepo = useCallback((repoId) => {
+    setRepositories(repositories.filter((repo) => repo.id !== repoId));
+  });
 
   const SubmitButtonIcon = loading ? FaSpinner : FaPlus;
 
@@ -68,6 +72,9 @@ const Home = () => {
         </SubmitButton>
       </Form>
       {!!error && <span>{error}</span>}
+      {repositories.length >= 1 && (
+        <ListRepos repos={repositories} removeRepo={removeRepo} />
+      )}
     </Container>
   );
 };

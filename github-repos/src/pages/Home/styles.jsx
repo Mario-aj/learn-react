@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 50%;
   margin: 0 auto;
+  box-sizing: border-box;
   padding: 16px 32px;
 
   background-color: ${({ dark }) => (dark ? '#0d2636' : '#fff')};
@@ -15,18 +16,28 @@ export const Container = styled.div`
     margin-bottom: 16px;
   }
 
+  span {
+    display: block;
+    margin-top: 4px;
+    color: red;
+    font-size: 13px;
+  }
+
   @media (max-width: 768px) {
     width: 95%;
   }
 `;
 
 export const Form = styled.form`
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
   input {
-    width: 80%;
+    flex: 1;
     padding: 8px 16px;
-    border: 1px solid #ddd;
+    border: 1px solid ${({ error }) => (error ? '#ff0000' : '#ddd')};
 
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;

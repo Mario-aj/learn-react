@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FaPlus, FaSpinner } from 'react-icons/fa';
 import { useTheme } from 'src/hooks/useTheme';
 import api from 'src/services/api';
@@ -12,11 +12,32 @@ const Home = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const repoStoraged = localStorage.getItem('repos');
+
+    if (repoStoraged) {
+      setRepositories(JSON.parse(repoStoraged));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('repos', JSON.stringify(repositories));
+  }, [repositories]);
+
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
       if (!newRepository.trim()) {
         setError('please, write a repository name');
+        return;
+      }
+
+      const repoAlreadyExist = repositories.find(
+        (repo) => repo.name === newRepository
+      );
+
+      if (repoAlreadyExist) {
+        setError('This repository already exist in the list below');
         return;
       }
 

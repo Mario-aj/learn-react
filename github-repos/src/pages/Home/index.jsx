@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { FaPlus, FaSpinner } from 'react-icons/fa';
 import { useTheme } from 'src/hooks/useTheme';
 import api from 'src/services/api';
 import { Container, Form, SubmitButton } from './styles';
@@ -8,6 +9,7 @@ const Home = () => {
   const [repositories, setRepositories] = useState([]);
   const [newRepository, setNewRepository] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = useCallback(
     (e) => {
@@ -17,6 +19,8 @@ const Home = () => {
         return;
       }
 
+      setLoading(true);
+
       const onSearchRepo = async () => {
         const response = await api.searchRepo(newRepository);
 
@@ -24,6 +28,7 @@ const Home = () => {
           setError(response.error);
           return;
         }
+
         const repo = {
           name: response.full_name,
           id: response.id,
@@ -32,6 +37,7 @@ const Home = () => {
 
         setRepositories([...repositories, repo]);
         setNewRepository('');
+        setLoading(false);
       };
 
       onSearchRepo();
@@ -44,6 +50,8 @@ const Home = () => {
     setError('');
   };
 
+  const SubmitButtonIcon = loading ? FaSpinner : FaPlus;
+
   return (
     <Container dak={dark}>
       <h1>My repositories</h1>
@@ -55,7 +63,9 @@ const Home = () => {
           value={newRepository}
           onChange={onChangeInput}
         />
-        <SubmitButton type="submit">+</SubmitButton>
+        <SubmitButton type="submit" loading={loading} disabled={loading}>
+          <SubmitButtonIcon size={20} color="#fff" />
+        </SubmitButton>
       </Form>
       {!!error && <span>{error}</span>}
     </Container>

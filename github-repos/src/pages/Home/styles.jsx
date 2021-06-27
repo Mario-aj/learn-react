@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div`
   width: 50%;
@@ -26,6 +26,10 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     width: 95%;
   }
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 `;
 
 export const Form = styled.form`
@@ -46,14 +50,34 @@ export const Form = styled.form`
     font-size: 16px;
   }
 `;
+
+const buttonAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 export const SubmitButton = styled.button`
   padding: 6px 16px;
   background: #0d2636;
   border: 2px solid #0d2636;
 
-  color: #fff;
-  font-size: 18px;
-
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  ${({ loading }) =>
+    loading &&
+    css`
+      svg {
+        animation: ${buttonAnimation} 1s linear infinite;
+      }
+    `}
 `;

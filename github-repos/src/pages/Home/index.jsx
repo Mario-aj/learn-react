@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import { useTheme } from '../../hooks/useTheme';
-import api from '../../services/api';
+import { useTheme } from 'src/hooks/useTheme';
+import api from 'src/services/api';
 import { Container, Form, SubmitButton } from './styles';
 
 const Home = () => {

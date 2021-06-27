@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
-import { useTheme } from './hooks/useTheme';
-import Routes from './routes';
-import Header from './components/Header';
-import GlobalStyles from './index.styles';
+import { useTheme } from 'src/hooks/useTheme';
+import Routes from 'src/routes';
+import Header from 'src/components/Header';
+import GlobalStyles from 'src/index.styles';
 
 function App() {
   const { dark } = useTheme();

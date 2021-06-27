@@ -1,5 +1,5 @@
 import { FaToggleOff, FaToggleOn, FaGithub } from 'react-icons/fa';
-import { useTheme } from '../hooks/useTheme';
+import { useTheme } from 'src/hooks/useTheme';
 import { Container, Content, Title } from './Header.styles';
 
 const Header = () => {

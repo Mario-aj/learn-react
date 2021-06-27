@@ -1,22 +1,16 @@
-import { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from './contexts/theme-context';
+import { useTheme } from './hooks/useTheme';
 import Routes from './routes';
 import Header from './components/Header';
 import GlobalStyles from './index.styles';
 
 function App() {
-  const [dark, setDark] = useState(true);
-  const onChangeTheme = () => setDark(!dark);
-
+  const { dark } = useTheme();
   return (
-    <BrowserRouter>
-      <ThemeProvider value={{ dark, onChangeTheme }}>
-        <Header />
-        <Routes />
-        <GlobalStyles dark={dark} />
-      </ThemeProvider>
-    </BrowserRouter>
+    <>
+      <Header />
+      <Routes />
+      <GlobalStyles dark={dark} />
+    </>
   );
 }
 

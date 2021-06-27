@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTheme } from '../../hooks/useTheme';
 import api from '../../services/api';
 import { Container, Form, SubmitButton } from './styles';
@@ -43,10 +43,6 @@ const Home = () => {
     setNewRepository(e.target.value);
     setError('');
   };
-
-  useEffect(() => {
-    console.log(repositories);
-  }, [repositories]);
 
   return (
     <Container dak={dark}>

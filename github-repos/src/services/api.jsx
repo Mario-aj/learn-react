@@ -11,11 +11,32 @@ class Api {
 
       return response.data;
     } catch (error) {
-      console.log(error.message);
       return {
         error:
           'There is no repo with this name, please, try again with another name',
       };
+    }
+  }
+
+  async getRepoInfo(repo, status = '') {
+    try {
+      const [repoInfo, issuesData] = await Promise.all([
+        api.get(`/repos/${repo}`),
+        api.get(`/repos/${repo}/issues`, {
+          params: {
+            per_page: 5,
+          },
+        }),
+      ]);
+
+      return [repoInfo.data, issuesData.data];
+    } catch (error) {
+      return [
+        {
+          error:
+            'The info that you are looking for was not found, try again later',
+        },
+      ];
     }
   }
 }

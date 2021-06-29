@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import api from 'src/services/api';
 
-import { Title } from './styles';
+import { Container } from './styles';
 
 const Repository = () => {
-  const params = useParams();
-  const repositoryId = decodeURIComponent(params.repositoryId);
+  let { repositoryName } = useParams();
+  const [repository, setRepository] = useState({});
+  const [isues, setIssues] = useState([]);
 
-  return <Title>{repositoryId}</Title>;
+  useEffect(() => {
+    const load = async () => {
+      const [repoInfo, issuesInfo] = await api.getRepoInfo(
+        decodeURIComponent(repositoryName)
+      );
+      console.log(repoInfo, issuesInfo);
+      setIssues(issuesInfo);
+      setRepository(repoInfo);
+    };
+
+    load();
+  }, [repositoryName]);
+
+  return <Container>{repository.full_name}</Container>;
 };
 
 export default Repository;

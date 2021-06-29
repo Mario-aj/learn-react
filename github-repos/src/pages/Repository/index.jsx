@@ -23,11 +23,9 @@ const Repository = () => {
     load();
   }, [repositoryName]);
 
-  return (
-    <Container>
-      {repository?.full_name ? repository.full_name : <Loading />}
-    </Container>
-  );
+  if (Object.values(repository).length === 0) return <Loading />;
+
+  return <Container>{repository.full_name}</Container>;
 };
 
 export default Repository;

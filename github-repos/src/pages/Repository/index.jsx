@@ -27,10 +27,14 @@ const Repository = () => {
   }, [repositoryName]);
 
   useEffect(() => {
-    const loadIssues = async () => {};
+    const loadIssues = async () => {
+      const repo = decodeURIComponent(repositoryName);
+      const response = await api.loadIssuesPerPage(repo, page);
+      setIssues(response);
+    };
 
     loadIssues();
-  });
+  }, [page, repositoryName]);
 
   const onPageChange = (action) =>
     setPage(action === 'previous' ? page - 1 : page + 1);

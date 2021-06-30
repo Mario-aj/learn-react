@@ -39,6 +39,22 @@ class Api {
       ];
     }
   }
+
+  async loadIssuesPerPage(repository, page) {
+    try {
+      const response = await api.get(`/repos/${repository}/issues`, {
+        params: {
+          status: 'open',
+          page,
+          per_page: 5,
+        },
+      });
+
+      return response.data;
+    } catch (e) {
+      return { error: 'The page that you requested was not found' };
+    }
+  }
 }
 
 export default new Api();

@@ -76,3 +76,28 @@ export const ButtonAction = styled.div`
     }
   }
 `;
+
+export const ButtonState = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 16px 0 0 16px;
+
+  button {
+    padding: 4px 0;
+    width: 55px;
+    background: #ddd;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & + button {
+      margin-left: 8px;
+    }
+
+    &:nth-child(${({ active }) => active + 1}) {
+      background: #0074db;
+      color: #fff;
+    }
+  }
+`;

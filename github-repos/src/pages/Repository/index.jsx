@@ -5,13 +5,25 @@ import Loading from 'src/components/Loading';
 import Issues from 'src/components/Issues';
 import api from 'src/services/api';
 
-import { Container, Owner, BackButton, ButtonAction } from './styles';
+import {
+  Container,
+  Owner,
+  BackButton,
+  ButtonAction,
+  ButtonState,
+} from './styles';
 
 const Repository = () => {
   let { repositoryName } = useParams();
   const [repository, setRepository] = useState({});
   const [issues, setIssues] = useState([]);
   const [page, setPage] = useState(1);
+  const [filterIndex, setFilterIndex] = useState(0);
+  const filters = [
+    { state: 'all', label: 'All' },
+    { state: 'open', label: 'Open' },
+    { state: 'closed', label: 'Closed' },
+  ];
 
   useEffect(() => {
     const load = async () => {
@@ -39,6 +51,8 @@ const Repository = () => {
   const onPageChange = (action) =>
     setPage(action === 'previous' ? page - 1 : page + 1);
 
+  const onStatechange = (index) => setFilterIndex(index);
+
   if (Object.values(repository).length === 0) return <Loading />;
 
   return (
@@ -51,6 +65,18 @@ const Repository = () => {
         <h1>{repository.owner.login}</h1>
         <p>{repository.description}</p>
       </Owner>
+
+      <ButtonState active={filterIndex}>
+        {filters.map((filter, index) => (
+          <button
+            type="button"
+            key={filter.state}
+            onClick={() => onStatechange(index)}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </ButtonState>
 
       {issues.length > 0 && (
         <>

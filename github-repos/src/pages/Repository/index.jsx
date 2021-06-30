@@ -26,6 +26,12 @@ const Repository = () => {
     load();
   }, [repositoryName]);
 
+  useEffect(() => {
+    const loadIssues = async () => {};
+
+    loadIssues();
+  });
+
   const onPageChange = (action) =>
     setPage(action === 'previous' ? page - 1 : page + 1);
 
@@ -42,20 +48,25 @@ const Repository = () => {
         <p>{repository.description}</p>
       </Owner>
 
-      <Issues issues={issues} />
-      <ButtonAction>
-        <button
-          type="button"
-          disabled={page < 2}
-          onClick={() => onPageChange('previous')}
-        >
-          previous
-        </button>
+      {issues.length > 0 && (
+        <>
+          {' '}
+          <Issues issues={issues} />
+          <ButtonAction>
+            <button
+              type="button"
+              disabled={page < 2}
+              onClick={() => onPageChange('previous')}
+            >
+              previous
+            </button>
 
-        <button type="button" onClick={() => onPageChange('next')}>
-          next
-        </button>
-      </ButtonAction>
+            <button type="button" onClick={() => onPageChange('next')}>
+              next
+            </button>
+          </ButtonAction>
+        </>
+      )}
     </Container>
   );
 };

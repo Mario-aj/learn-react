@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import Loading from 'src/components/Loading';
@@ -19,16 +19,19 @@ const Repository = () => {
   const [issues, setIssues] = useState([]);
   const [page, setPage] = useState(1);
   const [filterIndex, setFilterIndex] = useState(0);
-  const filters = [
-    { state: 'all', label: 'All', active: true },
-    { state: 'open', label: 'Open', active: false },
-    { state: 'closed', label: 'Closed', active: false },
-  ];
+  const filters = useMemo(
+    () => [
+      { state: 'all', label: 'All', active: true },
+      { state: 'open', label: 'Open', active: false },
+      { state: 'closed', label: 'Closed', active: false },
+    ],
+    []
+  );
 
   useEffect(() => {
     const load = async () => {
       const [repoInfo, issuesInfo] = await api.getRepoInfo({
-        repos: decodeURIComponent(repositoryName),
+        repo: decodeURIComponent(repositoryName),
         state: filters.find((filter) => filter.active).state,
       });
 
@@ -45,7 +48,7 @@ const Repository = () => {
       const response = await api.loadIssuesPerPage({
         repo,
         page,
-        status: filters[filterIndex].state,
+        state: filters[filterIndex].state,
       });
       setIssues(response);
     };

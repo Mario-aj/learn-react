@@ -32,6 +32,7 @@ class Api {
 
       return [repoInfo.data, issuesData.data];
     } catch (error) {
+      console.log('primeira ', error);
       return [
         {
           error:
@@ -52,7 +53,8 @@ class Api {
       });
 
       return response.data;
-    } catch (e) {
+    } catch (error) {
+      console.log('primeira ', error);
       return { error: 'The page that you requested was not found' };
     }
   }

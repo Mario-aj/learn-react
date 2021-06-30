@@ -5,12 +5,13 @@ import Loading from 'src/components/Loading';
 import Issues from 'src/components/Issues';
 import api from 'src/services/api';
 
-import { Container, Owner, BackButton } from './styles';
+import { Container, Owner, BackButton, ButtonAction } from './styles';
 
 const Repository = () => {
   let { repositoryName } = useParams();
   const [repository, setRepository] = useState({});
   const [issues, setIssues] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const load = async () => {
@@ -24,6 +25,9 @@ const Repository = () => {
 
     load();
   }, [repositoryName]);
+
+  const onPageChange = (action) =>
+    setPage(action === 'previous' ? page - 1 : page + 1);
 
   if (Object.values(repository).length === 0) return <Loading />;
 
@@ -39,6 +43,19 @@ const Repository = () => {
       </Owner>
 
       <Issues issues={issues} />
+      <ButtonAction>
+        <button
+          type="button"
+          disabled={page < 2}
+          onClick={() => onPageChange('previous')}
+        >
+          previous
+        </button>
+
+        <button type="button" onClick={() => onPageChange('next')}>
+          next
+        </button>
+      </ButtonAction>
     </Container>
   );
 };

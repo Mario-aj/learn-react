@@ -49,3 +49,30 @@ export const BackButton = styled(Link)`
     margin: 0;
   }
 `;
+
+export const ButtonAction = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 8px;
+  padding: 8px 16px;
+  border-top: 1px solid #ddd;
+
+  button {
+    background: #0d2636;
+    color: #fff;
+    padding: 6px 0;
+    border-radius: 4px;
+
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+`;

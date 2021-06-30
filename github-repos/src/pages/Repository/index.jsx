@@ -20,33 +20,38 @@ const Repository = () => {
   const [page, setPage] = useState(1);
   const [filterIndex, setFilterIndex] = useState(0);
   const filters = [
-    { state: 'all', label: 'All' },
-    { state: 'open', label: 'Open' },
-    { state: 'closed', label: 'Closed' },
+    { state: 'all', label: 'All', active: true },
+    { state: 'open', label: 'Open', active: false },
+    { state: 'closed', label: 'Closed', active: false },
   ];
 
   useEffect(() => {
     const load = async () => {
-      const [repoInfo, issuesInfo] = await api.getRepoInfo(
-        decodeURIComponent(repositoryName)
-      );
+      const [repoInfo, issuesInfo] = await api.getRepoInfo({
+        repos: decodeURIComponent(repositoryName),
+        state: filters.find((filter) => filter.active).state,
+      });
 
       setIssues(issuesInfo);
       setRepository(repoInfo);
     };
 
     load();
-  }, [repositoryName]);
+  }, [repositoryName, filters]);
 
   useEffect(() => {
     const loadIssues = async () => {
       const repo = decodeURIComponent(repositoryName);
-      const response = await api.loadIssuesPerPage(repo, page);
+      const response = await api.loadIssuesPerPage({
+        repo,
+        page,
+        status: filters[filterIndex].state,
+      });
       setIssues(response);
     };
 
     loadIssues();
-  }, [page, repositoryName]);
+  }, [page, repositoryName, filterIndex, filters]);
 
   const onPageChange = (action) =>
     setPage(action === 'previous' ? page - 1 : page + 1);

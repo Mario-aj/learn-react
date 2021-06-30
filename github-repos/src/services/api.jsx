@@ -18,12 +18,13 @@ class Api {
     }
   }
 
-  async getRepoInfo(repo, status = '') {
+  async getRepoInfo({ repo, state = 'all' }) {
     try {
       const [repoInfo, issuesData] = await Promise.all([
         api.get(`/repos/${repo}`),
         api.get(`/repos/${repo}/issues`, {
           params: {
+            state,
             per_page: 5,
           },
         }),
@@ -40,11 +41,11 @@ class Api {
     }
   }
 
-  async loadIssuesPerPage(repository, page) {
+  async loadIssuesPerPage({ repo, page, state = 'all' }) {
     try {
-      const response = await api.get(`/repos/${repository}/issues`, {
+      const response = await api.get(`/repos/${repo}/issues`, {
         params: {
-          status: 'open',
+          state,
           page,
           per_page: 5,
         },

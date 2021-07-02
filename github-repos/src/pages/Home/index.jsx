@@ -39,7 +39,7 @@ const Home = () => {
       const repoAlreadyExist = repositories.find(
         (repo) => repo.name === repoName
       );
-
+      console.log('exist: ', repoAlreadyExist);
       if (repoAlreadyExist) {
         setError('This repository already exist in the list below');
         return;
@@ -102,9 +102,9 @@ const Home = () => {
     const repo = result?.speech?.replaceAll(' ', '/');
 
     if (repo) {
-      console.log(repo);
       handleOnSubmit(repo);
       setNewRepository(repo);
+      setError('');
     }
   }, [result.speech, handleOnSubmit]);
 

@@ -38,16 +38,24 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
 
-  input {
-    flex: 1;
-    padding: 8px 16px;
+  div {
+    display: flex;
+    width: 100%;
     border: 1px solid ${({ error }) => (error ? '#ff0000' : '#ddd')};
 
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-
-    color: #2a2a2a;
-    font-size: 16px;
+    align-items: center;
+    input {
+      flex: 1;
+      padding: 8px 16px;
+      color: #2a2a2a;
+      font-size: 16px;
+    }
+    svg {
+      margin: 0 8px;
+      cursor: pointer;
+    }
   }
 `;
 

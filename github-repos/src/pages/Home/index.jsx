@@ -1,13 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FaPlus, FaSpinner } from 'react-icons/fa';
+import { FiMic, FiMicOff } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import { useTheme } from 'src/hooks/useTheme';
+import { useRecognition } from 'src/hooks/useRecognition';
 import api from 'src/services/api';
 import ListRepos from 'src/components/ListRepos';
 import { Container, Form, SubmitButton } from './styles';
 
 const Home = () => {
   const { dark } = useTheme();
+  const { result, isListening, recognition } = useRecognition();
   const history = useHistory();
   const [repositories, setRepositories] = useState([]);
   const [newRepository, setNewRepository] = useState('');
@@ -26,16 +29,15 @@ const Home = () => {
     localStorage.setItem('repos', JSON.stringify(repositories));
   }, [repositories]);
 
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!newRepository.trim()) {
+  const handleOnSubmit = useCallback(
+    (repoName) => {
+      if (!repoName?.trim()) {
         setError('please, write a repository name');
         return;
       }
 
       const repoAlreadyExist = repositories.find(
-        (repo) => repo.name === newRepository
+        (repo) => repo.name === repoName
       );
 
       if (repoAlreadyExist) {
@@ -46,7 +48,7 @@ const Home = () => {
       setLoading(true);
 
       const onSearchRepo = async () => {
-        const response = await api.searchRepo(newRepository);
+        const response = await api.searchRepo(repoName);
 
         if (response.error) {
           setError(response.error);
@@ -66,7 +68,15 @@ const Home = () => {
 
       onSearchRepo();
     },
-    [newRepository, repositories]
+    [repositories]
+  );
+
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      handleOnSubmit(e.target[0].value);
+    },
+    [handleOnSubmit]
   );
 
   const onChangeInput = (e) => {
@@ -88,21 +98,49 @@ const Home = () => {
     [history]
   );
 
+  useEffect(() => {
+    const repo = result?.speech?.replaceAll(' ', '/');
+
+    if (repo) {
+      console.log(repo);
+      handleOnSubmit(repo);
+      setNewRepository(repo);
+    }
+  }, [result.speech, handleOnSubmit]);
+
+  const onRecognition = () => {
+    const { error: recognitionError } = result;
+    if (recognitionError) {
+      setError(recognitionError);
+      return;
+    }
+
+    isListening ? recognition.stop() : recognition.start();
+  };
+
   const SubmitButtonIcon = loading ? FaSpinner : FaPlus;
+  const Microphone = isListening ? FiMic : FiMicOff;
 
   return (
     <Container dak={dark}>
       <h1>My repositories</h1>
 
       <Form onSubmit={onSubmit} error={!!error}>
-        <input
-          type="text"
-          placeholder="Search repos"
-          value={newRepository}
-          onChange={onChangeInput}
-        />
-        <SubmitButton type="submit" loading={loading} disabled={loading}>
-          <SubmitButtonIcon size={20} color="#fff" />
+        <div>
+          <input
+            type="text"
+            placeholder="Search repos"
+            value={newRepository}
+            onChange={onChangeInput}
+          />
+          <Microphone size={18} color="#0d2636" onClick={onRecognition} />
+        </div>
+        <SubmitButton
+          type="submit"
+          loading={loading}
+          disabled={loading || isListening}
+        >
+          <SubmitButtonIcon size={18} color="#fff" />
         </SubmitButton>
       </Form>
       {!!error && <span>{error}</span>}

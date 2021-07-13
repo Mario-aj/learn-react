@@ -11,9 +11,7 @@ export const useRecognition = () => {
   const recognition =
     speechRecognition !== undefined ? new speechRecognition() : null;
 
-  if (!recognition) {
-    setError('Speech recognition is not found!');
-  }
+  if (!recognition) setError('Speech recognition is not found!');
 
   recognition.lang = 'en_US';
 

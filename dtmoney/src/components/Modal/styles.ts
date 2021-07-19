@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.7);
@@ -22,19 +22,26 @@ export const Container = styled.div`
     pointer-events: visible;
   }
 
-  & > div {
-    background: #fff;
-    transform: translateY(-200px);
-    transition: all 0.3s ease-in-out;
-
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 8px 16px;
-  }
-
   &.open > div {
     transform: translateY(0);
   }
+`;
+
+const modalContentStyles = (className: string) =>
+  !className
+    ? css`
+        background: #fff;
+        transform: translateY(-200px);
+        transition: all 0.3s ease-in-out;
+
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 8px 16px;
+      `
+    : css``;
+
+export const ModalContent = styled.div`
+  ${modalContentStyles};
 `;
 
 export const ModalHeader = styled.div`

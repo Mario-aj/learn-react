@@ -5,10 +5,10 @@ interface ModalProps {
   children?: ReactNode;
   isOpen: boolean;
   onClose: () => void;
-  style?: {};
+  className?: string;
 }
 
-export const Modal = ({ children, onClose, isOpen, style }: ModalProps) => {
+export const Modal = ({ children, onClose, isOpen, className }: ModalProps) => {
   const closeOnKeyDown = (e: any) => {
     if ((e.charCode || e.keyCode) === 27) onClose();
   };
@@ -30,7 +30,7 @@ export const Modal = ({ children, onClose, isOpen, style }: ModalProps) => {
             x
           </button>
         </ModalHeader>
-        <div style={style}>{children}</div>
+        <div className={className}>{children}</div>
       </div>
     </Container>
   );

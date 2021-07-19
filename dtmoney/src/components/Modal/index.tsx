@@ -1,5 +1,5 @@
 import { useEffect, ReactNode } from "react";
-import { Container, ModalContent, ModalHeader } from "./styles";
+import { Container, ModalHeader } from "./styles";
 
 interface ModalProps {
   children?: ReactNode;
@@ -23,15 +23,15 @@ export const Modal = ({ children, onClose, isOpen, style }: ModalProps) => {
   }, []);
 
   return (
-    <Container className={`${isOpen && "open"}`} onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
+    <Container className={`${isOpen ? "open" : ""}`} onClick={onClose}>
+      <div onClick={(e) => e.stopPropagation()}>
         <ModalHeader>
           <button className="close" onClick={onClose}>
             x
           </button>
         </ModalHeader>
         <div style={style}>{children}</div>
-      </ModalContent>
+      </div>
     </Container>
   );
 };

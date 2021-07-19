@@ -17,7 +17,7 @@ export function App() {
 
   return (
     <>
-      <Header />
+      <Header onOpenModal={handleTransactionModalOpen} />
       <Dashboard />
       <Modal
         isOpen={isTransactionModalOpen}

@@ -27,18 +27,15 @@ export const Container = styled.div`
   }
 `;
 
-const modalContentStyles = (className: string) =>
-  !className
-    ? css`
-        background: #fff;
-        transform: translateY(-200px);
-        transition: all 0.3s ease-in-out;
+const modalContentStyles = (className: string) => css`
+  background: #fff;
+  transform: translateY(-200px);
+  transition: all 0.3s ease-in-out;
 
-        box-sizing: border-box;
-        border-radius: 4px;
-        padding: 8px 16px;
-      `
-    : css``;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 16px;
+`;
 
 export const ModalContent = styled.div`
   ${modalContentStyles};

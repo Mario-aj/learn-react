@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.7);
@@ -27,7 +27,7 @@ export const Container = styled.div`
   }
 `;
 
-const modalContentStyles = (className: string) => css`
+export const ModalContent = styled.div`
   background: #fff;
   transform: translateY(-200px);
   transition: all 0.3s ease-in-out;
@@ -35,10 +35,6 @@ const modalContentStyles = (className: string) => css`
   box-sizing: border-box;
   border-radius: 4px;
   padding: 8px 16px;
-`;
-
-export const ModalContent = styled.div`
-  ${modalContentStyles};
 `;
 
 export const ModalHeader = styled.div`

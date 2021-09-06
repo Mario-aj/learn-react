@@ -7,12 +7,11 @@ const MovieRow = ({ movieLists, title }) => {
       <S.ListArea>
         <S.List>
           {movieLists.results.length > 0 &&
-            movieLists.results.map((movieList, index) => (
-              <div>
+            movieLists.results.map(movieList => (
+              <div key={movieList.id}>
                 <img
-                  key={index}
                   src={`https://image.tmdb.org/t/p/w300${movieList.poster_path}`}
-                  alt={movieList.original_title}
+                  alt={movieList.id}
                 />
               </div>
             ))}

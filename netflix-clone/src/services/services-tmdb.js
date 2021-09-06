@@ -22,10 +22,10 @@ class ServiceTMDB {
         ),
       },
       {
-        slug: 'trading',
+        slug: 'trending',
         title: 'Recomendados para Você',
         items: await this._getMoveByEndpoint(
-          `/trading/all/week?language=${this.language}&api_key=${this.api_key}`
+          `/trending/all/week?language=${this.language}&api_key=${this.api_key}`
         ),
       },
       {

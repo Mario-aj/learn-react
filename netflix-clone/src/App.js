@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ServicesTMDB } from './services';
+import { MovieRow } from './components';
 
 export function App() {
-  const [homeMovieList, setHomeMovieList] = useState([]);
+  const [homeMovieLists, setHomeMovieLists] = useState([]);
 
   useEffect(() => {
     const loadHomeList = async () => {
@@ -10,7 +11,7 @@ export function App() {
         const response = await ServicesTMDB.getHomeMoveList();
 
         console.log(response);
-        setHomeMovieList(response);
+        setHomeMovieLists(response);
       } catch (error) {
         console.log(error);
       }
@@ -19,13 +20,17 @@ export function App() {
     loadHomeList();
   }, []);
 
-  if (homeMovieList.length === 0) return <div>Loading...</div>;
+  if (homeMovieLists.length === 0) return <div>Loading...</div>;
 
   return (
     <div>
       <section>
-        {homeMovieList.map(item => (
-          <div key={item.slug}>{item.title}</div>
+        {homeMovieLists.map(homeMovieList => (
+          <MovieRow
+            key={homeMovieList.slug}
+            title={homeMovieList.title}
+            movieLists={homeMovieList.items}
+          />
         ))}
       </section>
     </div>

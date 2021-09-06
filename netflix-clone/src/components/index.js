@@ -1,0 +1,1 @@
+export { MovieRow } from './MovieRow';

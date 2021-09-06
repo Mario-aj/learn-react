@@ -12,6 +12,14 @@ class ServiceTMDB {
     return response.data;
   }
 
+  async getMoveById(id) {
+    const response = await this._getMoveByEndpoint(
+      `/tv/${id}?language=${this.language}&api_key=${this.api_key}`
+    );
+
+    return response;
+  }
+
   async getHomeMoveList() {
     return [
       {

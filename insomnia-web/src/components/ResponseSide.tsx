@@ -1,7 +1,13 @@
+import { useRequest } from '../hook';
+
 const ResponseSide = (): JSX.Element => {
+  const { method, url } = useRequest();
+
   return (
     <div>
-      <h1>Response side!</h1>
+      <h1>
+        {method} - {url}
+      </h1>
     </div>
   );
 };

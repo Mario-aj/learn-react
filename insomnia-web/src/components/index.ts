@@ -1,2 +1,2 @@
-export { default as RequestSide } from './RequestSide';
+export { RequestSide } from './ReuqestSide';
 export { default as ResponseSide } from './ResponseSide';

@@ -7,10 +7,10 @@ export const Counter = () => {
 
   return (
     <div className="counter-container">
-      <span>Content counter is: {count}</span>
+      <span>Current count is: {count}</span>
       <div className="counter-buttons">
-        <button onClick={() => setCount(count - 1)}>decrement</button>
-        <button onClick={() => setCount(count + 1)}>increment</button>
+        <button onClick={() => setCount((c) => c - 1)}>decrement</button>
+        <button onClick={() => setCount((c) => c + 1)}>increment</button>
       </div>
     </div>
   );

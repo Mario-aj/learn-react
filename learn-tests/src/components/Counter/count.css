@@ -1,0 +1,28 @@
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd;
+  padding: 32px;
+  padding-bottom: 16px;
+  border-radius: 4px;
+}
+
+.counter-buttons {
+  display: flex;
+  gap: 0.75rem;
+
+  margin-top: 16px;
+}
+
+.counter-buttons button {
+  background-color: blue;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}

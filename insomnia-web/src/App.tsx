@@ -1,3 +1,10 @@
+import { RequestSide, ResponseSide } from './components';
+
 export function App() {
-  return <div>Heloo insomnia web!</div>;
+  return (
+    <div>
+      <RequestSide />
+      <ResponseSide />
+    </div>
+  );
 }

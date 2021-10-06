@@ -64,6 +64,7 @@ const DropDown = ({
         <div className="bg-white rounded flex flex-col absolute top-9 gap-2 -left-2 w-40">
           {options?.map((option) => (
             <Method
+              key={option.title}
               method={option}
               className="hover:bg-gray-300 transition-all duration-200 h-full p-2 w-full"
               onClick={() => {

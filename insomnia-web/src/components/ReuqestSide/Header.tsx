@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent, useCallback } from 'react';
 import { DropDown } from '../ui';
 
 const METHODS_HTTP = [
@@ -9,17 +9,25 @@ const METHODS_HTTP = [
 ];
 
 const Header = () => {
-  const [selectedOption, setSelectedOption] = useState(METHODS_HTTP[0]);
+  const [selectedMethod, setSelectedMethod] = useState(METHODS_HTTP[0]);
+
+  const onSubmit = useCallback(
+    (event: FormEvent<HTMLElement>) => {
+      event.preventDefault();
+      console.log(selectedMethod);
+    },
+    [selectedMethod]
+  );
 
   return (
     <form
-      onSubmit={() => {}}
+      onSubmit={onSubmit}
       className="bg-gray-900 flex items-center justify-between pl-4 h-11 border border-gray-700"
     >
       <DropDown
         options={METHODS_HTTP}
-        selectedOption={selectedOption}
-        onSelectedOption={(option) => setSelectedOption(option)}
+        selectedOption={selectedMethod}
+        onSelectedOption={(option) => setSelectedMethod(option)}
         className="mr-3"
       />
       <input

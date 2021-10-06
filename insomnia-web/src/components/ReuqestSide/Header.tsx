@@ -1,7 +1,24 @@
+import { useState } from 'react';
+import { DropDown } from '../ui';
+
+const METHODS_HTTP = [
+  { title: 'GET', color: 'purple' },
+  { title: 'POST', color: 'green' },
+  { title: 'PUT', color: 'yellow' },
+  { title: 'DELETE', color: 'red' },
+];
+
 const Header = () => {
+  const [selectedOption, setSelectedOption] = useState(METHODS_HTTP[0]);
+
   return (
     <div className="bg-gray-900 flex items-center justify-between pl-4 h-11 border border-gray-700">
-      <span className="mr-2 text-purple-600 text-xs">GET</span>
+      <DropDown
+        options={METHODS_HTTP}
+        selectedOption={selectedOption}
+        onSelectedOption={(option) => setSelectedOption(option)}
+        className="mr-3"
+      />
       <input
         type="text"
         placeholder="https://api.myproduct.com/v1/users"

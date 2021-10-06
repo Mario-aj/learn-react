@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import { Counter } from '../';
+import { Counter } from './';
 
 describe('<Counter />', () => {
   it('should render Counter component', () => {

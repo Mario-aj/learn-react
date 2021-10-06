@@ -12,7 +12,10 @@ const Header = () => {
   const [selectedOption, setSelectedOption] = useState(METHODS_HTTP[0]);
 
   return (
-    <div className="bg-gray-900 flex items-center justify-between pl-4 h-11 border border-gray-700">
+    <form
+      onSubmit={() => {}}
+      className="bg-gray-900 flex items-center justify-between pl-4 h-11 border border-gray-700"
+    >
       <DropDown
         options={METHODS_HTTP}
         selectedOption={selectedOption}
@@ -24,10 +27,13 @@ const Header = () => {
         placeholder="https://api.myproduct.com/v1/users"
         className="flex-1 bg-gray-900 h-full focus:outline-none"
       />
-      <button className="h-full bg-purple-500 hover:bg-purple-700 transition-all duration-300 px-4">
+      <button
+        type="submit"
+        className="h-full bg-purple-500 hover:bg-purple-700 transition-all duration-300 px-4"
+      >
         Send
       </button>
-    </div>
+    </form>
   );
 };
 

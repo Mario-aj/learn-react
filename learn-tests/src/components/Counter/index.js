@@ -9,8 +9,8 @@ export const Counter = () => {
     <div className="counter-container">
       <span>Current count is: {count}</span>
       <div className="counter-buttons">
-        <button onClick={() => setCount((c) => c - 1)}>decrement</button>
-        <button onClick={() => setCount((c) => c + 1)}>increment</button>
+        <button onMouseDown={() => setCount((c) => c - 1)}>decrement</button>
+        <button onMouseDown={() => setCount((c) => c + 1)}>increment</button>
       </div>
     </div>
   );

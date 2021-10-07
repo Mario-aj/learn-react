@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { Counter } from './';
 
@@ -24,9 +25,9 @@ describe('<Counter />', () => {
     const increment = screen.getByRole('button', { name: 'increment' });
 
     expect(spanElement).toHaveTextContent('Current count is: 0');
-    fireEvent.click(increment);
+    userEvent.click(increment);
     expect(spanElement).toHaveTextContent('Current count is: 1');
-    fireEvent.click(increment);
+    userEvent.click(increment);
     expect(spanElement).toHaveTextContent('Current count is: 2');
   });
 
@@ -37,9 +38,9 @@ describe('<Counter />', () => {
     const decrement = screen.getByRole('button', { name: 'decrement' });
 
     expect(spanElement).toHaveTextContent('Current count is: 0');
-    fireEvent.click(decrement);
+    userEvent.click(decrement);
     expect(spanElement).toHaveTextContent('Current count is: -1');
-    fireEvent.click(decrement);
+    userEvent.click(decrement);
     expect(spanElement).toHaveTextContent('Current count is: -2');
   });
 });

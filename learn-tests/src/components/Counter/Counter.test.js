@@ -8,24 +8,25 @@ describe('<Counter />', () => {
     render(<Counter />);
 
     const spanElement = screen.getByText(/Current count is/i);
-    const [decrement, increment] = screen.getAllByRole('button');
+    const decrement = screen.getByRole('button', { name: /decrement/i });
+    const increment = screen.getByRole('button', { name: /increment/i });
 
     expect(spanElement).toBeInTheDocument();
     expect(spanElement).toHaveTextContent('Current count is: 0');
-    expect(decrement).toHaveTextContent('decrement');
-    expect(increment).toHaveTextContent('increment');
+    expect(decrement).toBeInTheDocument();
+    expect(increment).toBeInTheDocument();
   });
 
   it('should increment count when we click increment button', () => {
     render(<Counter />);
 
     const spanElement = screen.getByText(/Current count is/i);
-    const incrementButton = screen.getByRole('button', { name: 'increment' });
+    const increment = screen.getByRole('button', { name: 'increment' });
 
     expect(spanElement).toHaveTextContent('Current count is: 0');
-    fireEvent.click(incrementButton);
+    fireEvent.click(increment);
     expect(spanElement).toHaveTextContent('Current count is: 1');
-    fireEvent.click(incrementButton);
+    fireEvent.click(increment);
     expect(spanElement).toHaveTextContent('Current count is: 2');
   });
 
@@ -33,12 +34,12 @@ describe('<Counter />', () => {
     render(<Counter />);
 
     const spanElement = screen.getByText(/Current count is/i);
-    const decrementButton = screen.getByRole('button', { name: 'decrement' });
+    const decrement = screen.getByRole('button', { name: 'decrement' });
 
     expect(spanElement).toHaveTextContent('Current count is: 0');
-    fireEvent.click(decrementButton);
+    fireEvent.click(decrement);
     expect(spanElement).toHaveTextContent('Current count is: -1');
-    fireEvent.click(decrementButton);
+    fireEvent.click(decrement);
     expect(spanElement).toHaveTextContent('Current count is: -2');
   });
 });

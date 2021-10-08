@@ -1,6 +1,7 @@
 import { useState, FormEvent, useCallback } from 'react';
 import { DropDown } from '../ui';
 import { useRequest } from '../../hook';
+import { dispatchRequestProps } from '../../context';
 
 const METHODS_HTTP = [
   { title: 'GET', color: 'purple' },
@@ -19,7 +20,10 @@ const Header = () => {
       event.preventDefault();
 
       let { title } = selectedMethod;
-      dispatchRequest({ method: title, url: inputValue });
+      dispatchRequest({
+        method: title.toLowerCase() as dispatchRequestProps['method'],
+        url: inputValue,
+      });
     },
     [selectedMethod, inputValue, dispatchRequest]
   );

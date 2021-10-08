@@ -1,17 +1,17 @@
 import { createContext } from 'react';
 
-export type dispatchRequestProps = { url:string; method: string }
+export type dispatchRequestProps = {
+  url:string;
+  method: 'get' | 'post' | 'put' | 'delete';
+}
 
-type RequestContextProps = {
-  url: string;
-  method: string;
+interface RequestContextProps extends dispatchRequestProps {
   dispatchRequest: (props: dispatchRequestProps) => void;
 };
 
-
 const RequestContext = createContext<RequestContextProps>({
   url: '',
-  method: '',
+  method: 'get',
   dispatchRequest: () => {}
 });
 

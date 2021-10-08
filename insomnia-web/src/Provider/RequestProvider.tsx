@@ -3,7 +3,8 @@ import { RequestContext, dispatchRequestProps } from '../context';
 
 const RequestProvider = ({ children }: any) => {
   const [requestUrl, setRequestUrl] = useState('');
-  const [requestMethod, setRequestMethod] = useState('');
+  const [requestMethod, setRequestMethod] =
+    useState<dispatchRequestProps['method']>('get');
 
   const dispatchRequest = ({ url, method }: dispatchRequestProps) => {
     setRequestUrl(url);

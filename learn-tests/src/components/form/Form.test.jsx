@@ -1,8 +1,5 @@
-import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import fake from 'faker';
-
+import { render, screen, userEvent } from '../../__test__'
 import { Form } from './';
 
 describe('<Form />', () => {

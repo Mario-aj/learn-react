@@ -1,4 +1,4 @@
-import { Counter, Form } from './components';
+import { Counter, Form, Repos } from './components';
 import './App.css';
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       {/* <Counter /> */}
-
-      <Form onSubmit={onSubmit} />
+      {/* <Form onSubmit={onSubmit} /> */}
+      <Repos />
     </div>
   );
 }

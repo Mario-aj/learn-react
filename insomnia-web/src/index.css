@@ -17,7 +17,7 @@
     @apply text-gray-900 transition-all duration-300 bg-gray-100 dark:bg-gray-800 font-body dark:text-gray-100;
   }
 
-  #response-container {
+  #data-container {
     height: calc(100vh - 45px);
   }
 }

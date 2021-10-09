@@ -50,7 +50,7 @@ const ResponseSide = (): JSX.Element => {
       </div>
 
       {requetResponse && (
-        <div className="h-screen overflow-y-scroll" id="response-container">
+        <div className="h-screen overflow-y-scroll" id="data-container">
           <ReactJson
             theme="tomorrow"
             src={requetResponse}

@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-export const httpClientBaseURL = 'https://api.github.com';
+export const baseURL = 'https://api.github.com';
+const httpClient = axios.create({
+  baseURL,
+});
 
 export const getReposByUsername = async ({ username }) => {
-  const { data } = await axios.get(
-    `${httpClientBaseURL}/users/${username}/repos`
-  );
+  const { data } = await httpClient.get(`users/${username}/repos`);
 
   return data;
 };

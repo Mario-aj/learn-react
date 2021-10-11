@@ -1,9 +1,9 @@
 import { rest } from 'msw';
 
-import { httpClientBaseURL } from '../services';
+import { baseURL } from '../services';
 
 export const handlers = [
-  rest.get(`${httpClientBaseURL}/users/mario-aj/repos`, (req, res, ctx) => {
+  rest.get(`${baseURL}/users/mario-aj/repos`, (req, res, ctx) => {
     return res(
       ctx.json([
         { full_name: 'react-hooks' },

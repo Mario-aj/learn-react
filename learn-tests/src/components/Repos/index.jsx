@@ -6,11 +6,14 @@ export const Repos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    let amounted = true;
     const loadData = async () => {
       const response = await getReposByUsername({ username: 'mario-aj' });
-      setData(response);
+      if(amounted) setData(response);
     };
     loadData();
+
+    return () => amounted = false;
   }, []);
 
   if (!data.length) return <span>Loading...</span>;
@@ -20,7 +23,7 @@ export const Repos = () => {
       <h1>Repos</h1>
       <ul>
         {data.map((item, index) => (
-          <li key={`item-${index}`}>{item.name}</li>
+          <li key={`item-${index}`}>{item.full_name}</li>
         ))}
       </ul>
     </div>

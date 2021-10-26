@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "eslint": "^8.1.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -13,7 +14,9 @@
     "eslint-plugin-react-hooks": "^4",
     "git-commit-msg-linter": "^3.2.8",
     "husky": "^7.0.4",
-    "lint-staged": "^11.2.4"
+    "jest": "^27.3.1",
+    "lint-staged": "^11.2.4",
+    "ts-jest": "^27.0.7"
   },
   "dependencies": {
     "@types/node": "^16.11.6",

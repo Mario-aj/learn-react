@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest --passWithNoTests",
+    "test:watch": "yarn jest -- --watch",
+    "test:staged": "yarn jest -- --findRelatedTests",
+    "test:ci": "yarn jest -- --coverage"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",

@@ -1,6 +1,7 @@
 import { isPast, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { CheckCircle, Lock } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -9,7 +10,7 @@ type Props = {
   type: "live" | "class";
 };
 
-export const Lesson = ({ title, type, availableAt }: Props) => {
+export const Lesson = ({ title, type, availableAt, slug }: Props) => {
   const isLessonAvailable = isPast(availableAt);
   const availableAtFormatted = format(
     availableAt,
@@ -20,12 +21,12 @@ export const Lesson = ({ title, type, availableAt }: Props) => {
   );
 
   return (
-    <a href="#">
+    <Link to={`/event/lesson/${slug}`} className="group">
       <span className="text-sm font-normal text-gray-300">
         {availableAtFormatted}
       </span>
 
-      <div className="p-4 mt-2 border border-gray-500 rounded">
+      <div className="p-4 mt-2 border border-gray-500 rounded group-hover:border-green-500">
         <header className="flex items-center justify-between">
           {isLessonAvailable ? (
             <span className="flex items-center gap-2 text-sm font-medium text-blue-500">
@@ -45,6 +46,6 @@ export const Lesson = ({ title, type, availableAt }: Props) => {
 
         <strong className="block mt-5 text-base text-gray-200">{title}</strong>
       </div>
-    </a>
+    </Link>
   );
 };

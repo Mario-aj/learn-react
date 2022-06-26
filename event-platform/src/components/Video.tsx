@@ -9,6 +9,7 @@ import {
 import { gql, useQuery } from "@apollo/client";
 
 import "@vime/core/themes/default.css";
+import { ReadMore } from "./readmore";
 
 type Props = {
   videoSlug: string;
@@ -57,25 +58,31 @@ export const Video = ({ videoSlug }: Props) => {
 
   return (
     <div className="flex-1">
-      <div className="flex justify-center bg-black">
+      <section aria-label="video" className="flex justify-center bg-black">
         <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
           <Player>
             <Youtube videoId={data.lesson.videoId} />
             <DefaultUi />
           </Player>
         </div>
-      </div>
+      </section>
 
-      <div className="p-8 max-w-[1100px] m-auto">
-        <div className="flex items-start gap-16 mb-20">
-          <div className="flex-1">
+      <article aria-label="infos" className="p-8 max-w-[1100px] m-auto">
+        <section
+          aria-label="lesson-info"
+          className="flex items-start gap-16 mb-20"
+        >
+          <section aria-label="video-description" className="flex-1">
             <h1 className="mb-4 text-lg font-bold">{data.lesson.title}</h1>
             <p className="mb-6 leading-relaxed text-gray-200">
               {data.lesson.description}
             </p>
 
             {data.lesson.teacher && (
-              <div className="flex items-start gap-4">
+              <section
+                aria-label="lesson-teacher-info"
+                className="flex items-start gap-4"
+              >
                 <img
                   className="w-16 h-16 border-2 border-blue-500 rounded-full"
                   src={data.lesson.teacher.avatarURL}
@@ -86,13 +93,11 @@ export const Video = ({ videoSlug }: Props) => {
                   <strong className="block text-lg font-bold">
                     {data.lesson.teacher.name}
                   </strong>
-                  <span className="block text-sm text-gray-200">
-                    {data.lesson.teacher.bio}
-                  </span>
+                  <ReadMore min={30} text={data.lesson.teacher.bio} />
                 </div>
-              </div>
+              </section>
             )}
-          </div>
+          </section>
 
           <div className="flex flex-col gap-4">
             <a
@@ -111,7 +116,7 @@ export const Video = ({ videoSlug }: Props) => {
               Acesse o desafio
             </a>
           </div>
-        </div>
+        </section>
 
         <div className="grid grid-cols-2 gap-8">
           <a
@@ -156,7 +161,7 @@ export const Video = ({ videoSlug }: Props) => {
             </div>
           </a>
         </div>
-      </div>
+      </article>
     </div>
   );
 };

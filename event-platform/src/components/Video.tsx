@@ -74,22 +74,24 @@ export const Video = ({ videoSlug }: Props) => {
               {data.lesson.description}
             </p>
 
-            <div className="flex items-start gap-4">
-              <img
-                className="w-16 h-16 border-2 border-blue-500 rounded-full"
-                src={data.lesson.teacher.avatarURL}
-                alt="teacher picture"
-              />
+            {data.lesson.teacher && (
+              <div className="flex items-start gap-4">
+                <img
+                  className="w-16 h-16 border-2 border-blue-500 rounded-full"
+                  src={data.lesson.teacher.avatarURL}
+                  alt="teacher picture"
+                />
 
-              <div className="leading-relaxed">
-                <strong className="block text-lg font-bold">
-                  {data.lesson.teacher.name}
-                </strong>
-                <span className="block text-sm text-gray-200">
-                  {data.lesson.teacher.bio}
-                </span>
+                <div className="leading-relaxed">
+                  <strong className="block text-lg font-bold">
+                    {data.lesson.teacher.name}
+                  </strong>
+                  <span className="block text-sm text-gray-200">
+                    {data.lesson.teacher.bio}
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className="flex flex-col gap-4">

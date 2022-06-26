@@ -24,7 +24,7 @@ export const Subscribe = () => {
     //@ts-ignore
     const email = event.target.elements["email"].value;
 
-    createSubscriber({ variables: { name, email } });
+    await createSubscriber({ variables: { name, email } });
     navigate("/event");
   }
 

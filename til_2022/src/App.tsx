@@ -1,10 +1,9 @@
-import { Plus } from './shared/ui/icons/plus';
-import { XIcon } from './shared/ui/icons/XIcon';
+import { Plus, XIcon } from '@/shared/ui/icons';
 
 export function App() {
   return (
-    <div className="w-full h-screen flex flex-col items-center pt-10 gap-4">
-      <h1 className="text-3xl font-bold underline text-gray-700 mb-10">
+    <div className="flex flex-col items-center w-full h-screen gap-4 pt-10">
+      <h1 className="mb-10 text-3xl font-bold text-gray-700 underline">
         Dynamic Form with RHF and Zod!
       </h1>
 
@@ -17,7 +16,7 @@ export function App() {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              className="border-none bg-gray-300 hover:bg-gray-400 active:bg-gray-500 transition-colors duration-300 text-gray-800 rounded-full p-1"
+              className="p-1 text-gray-800 transition-colors duration-300 bg-gray-300 border-none rounded-full hover:bg-gray-400 active:bg-gray-500"
             >
               <Plus />
             </button>
@@ -26,18 +25,18 @@ export function App() {
                 type="text"
                 placeholder="00:00"
                 aria-label="time-inputs"
-                className="px-4 py-2 focus:outline-none border border-solid border-gray-400 rounded w-24 text-gray-800"
+                className="w-24 px-4 py-2 text-gray-800 border border-gray-400 border-solid rounded focus:outline-none"
               />
               <button
                 type="button"
-                className="border-none absolute right-2 bottom-3 bg-gray-200 hover:bg-gray-300 transition-colors text-sm duration-300 text-gray-800 rounded-full p-1"
+                className="absolute p-1 text-sm text-gray-800 transition-colors duration-300 bg-gray-200 border-none rounded-full right-2 bottom-3 hover:bg-gray-300"
               >
                 <XIcon />
               </button>
             </div>
             <button
               type="button"
-              className="border-none bg-gray-300 hover:bg-gray-400 active:bg-gray-500 transition-colors duration-300 text-gray-800 rounded-full p-1"
+              className="p-1 text-gray-800 transition-colors duration-300 bg-gray-300 border-none rounded-full hover:bg-gray-400 active:bg-gray-500"
             >
               <Plus />
             </button>

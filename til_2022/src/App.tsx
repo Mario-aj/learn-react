@@ -10,7 +10,9 @@ export function App() {
 
       <form>
         <fieldset>
-          <legend className="">Add new times</legend>
+          <legend className="mb-8">
+            Add times to build your work schedule
+          </legend>
 
           <div className="flex items-center gap-2">
             <button
@@ -28,7 +30,7 @@ export function App() {
               />
               <button
                 type="button"
-                className="border-none absolute right-2 bottom-3 bg-gray-200 hover:bg-gray-200 transition-colors text-sm duration-300 text-gray-800 rounded-full p-1"
+                className="border-none absolute right-2 bottom-3 bg-gray-200 hover:bg-gray-300 transition-colors text-sm duration-300 text-gray-800 rounded-full p-1"
               >
                 <XIcon />
               </button>

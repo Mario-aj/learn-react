@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { createContext, useState, useMemo, useContext } from "react";
+import { createContext, useState, useMemo } from "react";
 
 type ModeType = "dark" | "light";
 

@@ -13,11 +13,37 @@ import {
   CalendarTodayOutlined,
   HelpOutlined,
   BarChartOutlined,
-  PieChartOutlined,
   TimelineOutlined,
   MenuOutlined,
   MapOutlined,
+  PieChartOutlineOutlined,
 } from "@mui/icons-material";
+
+type ItemProps = {
+  title: string;
+  path: string;
+  icon?: React.ReactNode;
+  selected: string;
+  setSelected: (title: string) => void;
+};
+
+const Item = (props: ItemProps) => {
+  const { title, icon, path, selected, setSelected } = props;
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
+  return (
+    <MenuItem
+      active={title === selected}
+      onClick={() => setSelected(title)}
+      style={{ color: colors.grey[100] }}
+      icon={icon}
+    >
+      <Typography>{title}</Typography>
+      <Link to={path} />
+    </MenuItem>
+  );
+};
 
 export const Sidebar = () => {
   const theme = useTheme();
@@ -101,6 +127,86 @@ export const Sidebar = () => {
               </Box>
             </Box>
           )}
+
+          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            <Item
+              title="Dashboard"
+              path="/"
+              icon={<HomeOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Manage Team"
+              path="/team"
+              icon={<PeopleOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Contacts Information"
+              path="/contacts"
+              icon={<ContactsOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Invoices Balances"
+              path="/invoices"
+              icon={<ReceiptOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Profile Form"
+              path="/form"
+              icon={<PersonOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Calendar"
+              path="/calendar"
+              icon={<CalendarTodayOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="FAQ Page"
+              path="/faq"
+              icon={<HelpOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Bar Chart"
+              path="/bar"
+              icon={<BarChartOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Pie Chart"
+              path="/pie"
+              icon={<PieChartOutlineOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Line Chart"
+              path="/line"
+              icon={<TimelineOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Geography Chart"
+              path="/geography"
+              icon={<MapOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          </Box>
         </Menu>
       </ProSidebar>
     </Box>

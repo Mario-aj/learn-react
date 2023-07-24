@@ -5,7 +5,7 @@ import Dashboard from "./scenes/dashboard";
 import Topbar from "./scenes/global/Topbar";
 import { ColorModeContext, useMode } from "./theme";
 import Sidebar from "./scenes/global/Sidebar";
-// import Team from "./scenes/Team";
+import Team from "./scenes/Team";
 // import Invoices from "./scenes/Invoices";
 // import Contacts from "./scenes/Contacts";
 // import Bar from "./scenes/Bar";
@@ -30,8 +30,9 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              {/* <Route path="/team" element={<Team />} />
-              <Route path="/invoices" element={<Invoices />} />
+              <Route path="/team" element={<Team />} />
+
+              {/* <Route path="/invoices" element={<Invoices />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/bar" element={<Bar />} />
               <Route path="/form" element={<Form />} />

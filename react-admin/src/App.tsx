@@ -7,7 +7,7 @@ import { ColorModeContext, useMode } from "./theme";
 import Sidebar from "./scenes/global/Sidebar";
 import Team from "./scenes/Team";
 import Contacts from "./scenes/Contacts";
-// import Invoices from "./scenes/Invoices";
+import Invoices from "./scenes/Invoices";
 // import Bar from "./scenes/Bar";
 // import Form from "./scenes/Form";
 // import Line from "./scenes/Line";
@@ -32,8 +32,9 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contacts />} />
+              <Route path="/invoices" element={<Invoices />} />
 
-              {/* <Route path="/invoices" element={<Invoices />} />
+              {/* 
               <Route path="/bar" element={<Bar />} />
               <Route path="/form" element={<Form />} />
               <Route path="/line" element={<Line />} />
